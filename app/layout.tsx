@@ -6,6 +6,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import AuthProvider from "@/context/AuthProvider";
+import { Toaster } from "react-hot-toast";
+
+
 const montserrat = localFont({
   src: [
     {
@@ -41,7 +45,10 @@ const dmSans = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+                <Toaster position="top-right" />
+      </body>
     </html>
   );
 }
