@@ -20,23 +20,16 @@ export default function Footer() {
   return (
     <>
       <footer>
-        <Link href="/">
-          Tasteorama
-        </Link>
+        <Link href="/">Tasteorama</Link>
 
         <nav>
           <ul>
             <li>
-              <Link href="/">
-                Recipes
-              </Link>
+              <Link href="/">Recipes</Link>
             </li>
 
             <li>
-              <button
-                type="button"
-                onClick={() => setIsOpen(true)}
-              >
+              <button type="button" onClick={() => setIsOpen(true)}>
                 Account
               </button>
             </li>
@@ -46,12 +39,7 @@ export default function Footer() {
         <p>© 2025 CookingCompanion. All rights reserved.</p>
       </footer>
 
-      {isOpen && (
-        <AuthModal
-          onClose={() => setIsOpen(false)}
-        />
-      )}
+      {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
     </>
   );
 }
-
