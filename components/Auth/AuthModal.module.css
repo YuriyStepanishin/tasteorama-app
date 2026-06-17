@@ -1,0 +1,101 @@
+/*components/Auth/AuthModal.module.css*/
+
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #faf3e0;
+  padding: 24px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: zoomIn 0.3s forwards;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modal {
+    max-width: 480px;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.login {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+}
+
+.register {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #b88e63;
+  color: white;
+  cursor: pointer;
+}
+
+/* hover */
+.login:hover {
+  background: #eee;
+}
+
+.register:hover {
+  background: #a57c52;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

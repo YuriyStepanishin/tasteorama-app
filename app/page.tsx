@@ -8,6 +8,8 @@ import { Toaster } from 'react-hot-toast';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
+import SaveButton from "@/components/Auth/SaveButton"; 
+
 const Home = () => {
   return (
     <main className={css.main}>
@@ -17,6 +19,14 @@ const Home = () => {
           <Header />
         </Container>
       </Section>
+
+     <Section>
+        <Container>
+          <h2>Demo Save</h2>
+          <SaveButton />
+        </Container>
+      </Section>
+
       <Section className={css.footerSection}>
         <Container>
           <Footer />
@@ -27,3 +37,4 @@ const Home = () => {
 };
 
 export default Home;
+  

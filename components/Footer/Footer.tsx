@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import AuthModal from '@/components/AuthModal/AuthModal';
-
 /*
   Footer згідно ТЗ містить:
 
