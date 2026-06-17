@@ -1,6 +1,5 @@
 'use client';
 
-import css from './page.module.css';
 import Section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
 
@@ -10,6 +9,7 @@ import Footer from '@/components/Footer/Footer';
 import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
 import { useState } from 'react';
 import Loader from '@/components/Loader/Loader';
+
 import SaveButton from '@/components/Auth/SaveButton';
 
 const Home = () => {
@@ -26,13 +26,7 @@ const Home = () => {
     }
   };
   return (
-    <main className={css.main}>
-      <Section className={css.headerSection}>
-        <Container>
-          <Toaster />
-          <Header />
-        </Container>
-      </Section>
+
 
       <Section>
         {loading && <Loader />}
@@ -43,12 +37,8 @@ const Home = () => {
         <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
       </Section>
 
-      <Section className={css.footerSection}>
-        <Container>
-          <Footer />
-        </Container>
-      </Section>
-    </main>
+      
+
   );
 };
 

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 
 import Navigation from '@/components/Navigation/Navigation';
+import Container from '../Container/Container';
 
 /*
   Header згідно ТЗ містить:
@@ -17,13 +18,14 @@ import Navigation from '@/components/Navigation/Navigation';
 
 export default function Header() {
   return (
-    <header>
-      <Link href="/">
-        Tasteorama
-      </Link>
+    <div>
+      <Container>
+        <header>
+          <Link href="/">Tasteorama</Link>
 
-      <Navigation />
-    </header>
+          <Navigation />
+        </header>
+      </Container>
+    </div>
   );
 }
-
