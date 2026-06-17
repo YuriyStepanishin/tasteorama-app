@@ -7,6 +7,7 @@ import Container from '@/components/Container/Container';
 import { Toaster } from 'react-hot-toast';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import Hero from '@/components/Hero/Hero';
 
 const Home = () => {
   return (
@@ -15,6 +16,11 @@ const Home = () => {
         <Container>
           <Toaster />
           <Header />
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <Hero />
         </Container>
       </Section>
       <Section className={css.footerSection}>
