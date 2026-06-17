@@ -1,7 +1,11 @@
+'use client'
+
 import Link from 'next/link';
 import { useState } from 'react';
 
+
 import AuthModal from '@/components/AuthModal/AuthModal';
+import Container from '../Container/Container';
 
 /*
   Footer згідно ТЗ містить:
@@ -18,7 +22,8 @@ export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div>
+      <Container>
       <footer>
         <Link href="/">Tasteorama</Link>
 
@@ -39,7 +44,8 @@ export default function Footer() {
         <p>© 2025 CookingCompanion. All rights reserved.</p>
       </footer>
 
-      {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
-    </>
+        {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
+        </Container>
+    </div>
   );
 }
