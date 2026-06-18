@@ -1,10 +1,9 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { useState } from 'react';
 
-
-import AuthModal from '@/components/AuthModal/AuthModal';
+import AuthModal from '@/components/Auth/AuthModal';
 import Container from '../Container/Container';
 
 /*
@@ -24,28 +23,28 @@ export default function Footer() {
   return (
     <div>
       <Container>
-      <footer>
-        <Link href="/">Tasteorama</Link>
+        <footer>
+          <Link href="/">Tasteorama</Link>
 
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">Recipes</Link>
-            </li>
+          <nav>
+            <ul>
+              <li>
+                <Link href="/">Recipes</Link>
+              </li>
 
-            <li>
-              <button type="button" onClick={() => setIsOpen(true)}>
-                Account
-              </button>
-            </li>
-          </ul>
-        </nav>
+              <li>
+                <button type="button" onClick={() => setIsOpen(true)}>
+                  Account
+                </button>
+              </li>
+            </ul>
+          </nav>
 
-        <p>© 2025 CookingCompanion. All rights reserved.</p>
-      </footer>
+          <p>© 2025 CookingCompanion. All rights reserved.</p>
+        </footer>
 
         {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
-        </Container>
+      </Container>
     </div>
   );
 }

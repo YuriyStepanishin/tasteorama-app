@@ -1,0 +1,127 @@
+.container {
+  min-height: 267px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 79px;
+  padding-bottom: 79px;
+  background: #ffffff;
+}
+
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  background: #ffffff;
+}
+
+.image {
+  width: 361px;
+  height: 267px;
+  border-radius: 8px;
+}
+
+.content {
+  padding-top: 32px;
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 110%;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 32px;
+}
+
+.button {
+  border-radius: 8px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  width: 361px;
+  height: 56px;
+  background: var(--light-brown);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--white);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--brown);
+}
+.button:focus-visible {
+  background: var(--brown);
+  outline: none;
+}
+.button:active:not(:disabled) {
+  box-shadow: 0 0 0 2px var(--white);
+}
+.button:disabled {
+  box-shadow: 0 0 0 2px var(--white);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: 133.5px;
+    padding-bottom: 133.5px;
+    padding-left: 84px;
+    padding-right: 84px;
+  }
+
+  .image {
+    width: 600px;
+    height: 438px;
+  }
+
+  .button {
+    width: 340px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding-top: 38px;
+    padding-bottom: 38px;
+    padding-left: 107.5px;
+    padding-right: 107.5px;
+  }
+
+  .image {
+    width: 600px;
+    height: 438px;
+  }
+
+  .button {
+    width: 288px;
+  }
+}
