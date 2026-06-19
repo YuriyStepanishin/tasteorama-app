@@ -4,11 +4,9 @@
 
 export default function GlobalError({ reset }: { error: Error; reset: () => void }) {
   return (
-    <html>
-      <body>
-        <h2>Something went wrong 😢</h2>
-        <button onClick={() => reset()}>Try again</button>
-      </body>
-    </html>
+    <div style={{ textAlign: "center", padding: 40 }}>
+      <h2>Something went wrong 😢</h2>
+      <button onClick={() => reset()}>Try again</button>
+    </div>
   );
 }
