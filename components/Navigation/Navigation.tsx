@@ -21,28 +21,21 @@ export default function Navigation() {
         </li>
 
         <li>
-          <Link href="/login">Log in</Link>
+          <Link href="/auth/login">Log in</Link>
         </li>
 
         <li>
-          <Link href="/register">
-            Register
-          </Link>
+          <Link href="/register">Register</Link>
         </li>
 
         <li>
-          <Link href="/profile">
-            My Profile
-          </Link>
+          <Link href="/profile">My Profile</Link>
         </li>
 
         <li>
-          <Link href="/recipes/add">
-            Add Recipe
-          </Link>
+          <Link href="/recipes/add">Add Recipe</Link>
         </li>
       </ul>
     </nav>
   );
 }
-

@@ -7,8 +7,12 @@ import { logErrorResponse } from '../../_utils/utils';
 
 export async function POST(req: NextRequest) {
   try {
+    console.log('req', req);
+    console.log('api');
+
     const body = await req.json();
-    const apiRes = await api.post('auth/login', body);
+
+    const apiRes = await api.post('/auth/login', body);
 
     const cookieStore = await cookies();
     const setCookie = apiRes.headers['set-cookie'];

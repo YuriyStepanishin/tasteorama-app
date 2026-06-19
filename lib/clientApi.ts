@@ -19,13 +19,16 @@ export const register = async ({ name, email, password }: RegisterProps): Promis
   return response.data;
 };
 
-interface LoginProps {
+export interface LoginProps {
   email: string;
   password: string;
 }
 
-export const login = async ({ email, password }: LoginProps): Promise<User> => {
-  const response = await nextServer.post<User>('/auth/login', { email, password });
+export const login = async (data: LoginProps): Promise<User> => {
+  console.log('body', data);
+  console.log('login', nextServer);
+  const response = await nextServer.post<User>('/auth/login', data);
+  console.log('login2', login);
   return response.data;
 };
 
