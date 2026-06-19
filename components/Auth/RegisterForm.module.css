@@ -58,6 +58,10 @@
   color: #9f9f9f;
 }
 
+.input:hover {
+  border-color: #9b6c43;
+}
+
 .input:focus {
   outline: none;
   border-color: #9b6c43;
@@ -103,6 +107,10 @@
   font-size: 14px;
 }
 
+.loginText a:hover {
+  opacity: 0.7;
+}
+
 .loginText a {
   font-weight: 600;
   text-decoration: underline;
@@ -117,4 +125,40 @@
 
 .inputError {
   border: 1px solid red;
+}
+.loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* mobile base (320+) */
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .card {
+    max-width: 500px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1440px) {
+  .card {
+    max-width: 600px;
+  }
 }

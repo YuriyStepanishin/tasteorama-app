@@ -18,6 +18,7 @@ import { useUserStore } from "@/store/userStore";
 export default function RegisterForm() {
   const router = useRouter();
 
+  
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -179,12 +180,8 @@ className={`${styles.input} ${
               </p>
             )}
 
-         <button
-  type="submit"
-  className={styles.button}
-  disabled={loading}
->
-  {loading ? "Loading..." : "Create account"}
+<button type="submit" className={styles.button} disabled={loading}>
+  {loading ? <span className={styles.loader}></span> : "Create account"}
 </button>
 
           <p className={styles.loginText}>

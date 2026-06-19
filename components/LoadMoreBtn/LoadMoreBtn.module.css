@@ -1,0 +1,50 @@
+.scrollAnchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+
+.btnLoadMore {
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  min-height: 54px;
+  max-width: 372px;
+  background: var(--light-brown);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--white);
+  color: var(--white);
+  margin-top: 24px;
+}
+
+.btnLoadMore:hover:not(:disabled) {
+  background: var(--brown);
+}
+.btnLoadMore:focus-visible {
+  background: var(--brown);
+  outline: none;
+}
+.btnLoadMore:active:not(:disabled) {
+  box-shadow: 0 0 0 2px var(--white);
+}
+.btnLoadMore:disabled {
+  box-shadow: 0 0 0 2px var(--white);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .btnLoadMore {
+    width: 338px;
+  }
+}
+@media (min-width: 1440px) {
+  .btnLoadMore {
+    width: 289px;
+  }
+}

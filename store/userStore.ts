@@ -1,5 +1,3 @@
-//src/store/userStore.ts
-
 import { create } from "zustand";
 
 type User = {
@@ -11,7 +9,7 @@ type User = {
 type Store = {
   user: User | null;
   setUser: (user: User) => void;
-  clearUser: () => void;
+  logout: () => void;
 };
 
 export const useUserStore = create<Store>((set) => ({
@@ -19,5 +17,8 @@ export const useUserStore = create<Store>((set) => ({
 
   setUser: (user) => set({ user }),
 
-  clearUser: () => set({ user: null }),
+  logout: () => {
+    localStorage.removeItem("token");
+    set({ user: null });
+  },
 }));

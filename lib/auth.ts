@@ -1,25 +1,28 @@
-//lib/auth.ts
+// lib/auth.ts
 
-const BASE_URL = "http://localhost:5000/auth";
-
-export async function registerUser(values: {
-  name: string;
-  email: string;
-  password: string;
-}) {
-  const res = await fetch(`${BASE_URL}/register`, {
+export const registerUser = async (data: any) => {
+  const res = await fetch("http://localhost:3000/auth/register", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(values),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+    credentials: "include", 
   });
 
-  const data = await res.json();
+  const result = await res.json();
+
+  if (!res.ok) throw new Error(result.message);
+
+  return result;
+};
+
+export const getMe = async () => {
+  const res = await fetch("http://localhost:3000/auth/me", {
+    credentials: "include", 
+  });
 
   if (!res.ok) {
-    throw new Error(data.message || "Error");
+    throw new Error("Not authorized");
   }
 
-  return data;
-}
+  return res.json();
+};

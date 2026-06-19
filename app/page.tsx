@@ -1,58 +1,44 @@
 'use client';
 
-import css from './page.module.css';
 import Section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
-import Header from '@/components/Header/Header';
 
 import { Toaster } from 'react-hot-toast';
-import Contacts from '@/components/Contacts/Contacts';
-import About from '@/components/About/About';
-import Skills from '@/components/Skills/Skills';
-import Projects from '@/components/Projects/Projects';
-import Education from '@/components/Education/Education';
+import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
+import { useState } from 'react';
+import Loader from '@/components/Loader/Loader';
+
+import SaveButton from '@/components/SaveButton/SaveButton';
 
 const Home = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const handleLoadMoreRecipes = async (): Promise<void> => {
+    setLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('Recipes loaded successfully!');
+    } catch (error) {
+      console.error('Error loading recipes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
-    <main className={css.main}>
+
+
       <Section>
+        {loading && <Loader />}
         <Container>
-          <Toaster />
-          <Header />
+          <h2>Demo Save</h2>
+          <SaveButton />
         </Container>
+        <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
       </Section>
-      <Section>
-        <Container>
-          <Contacts />
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <About />
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Skills />
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Projects />
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Education />
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Footer />
-        </Container>
-      </Section>
-    </main>
+
+      
+
   );
 };
 
