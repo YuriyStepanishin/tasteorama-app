@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import AuthModal from '@/components/Auth/AuthModal';
-import Container from '../Container/Container';
+import Container from '@/components/Container/Container';
 
 /*
   Footer згідно ТЗ містить:
