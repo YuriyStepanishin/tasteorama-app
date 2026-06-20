@@ -8,7 +8,7 @@ import { logErrorResponse } from '../../_utils/utils';
 export async function POST(req: NextRequest) {
   try {
     console.log('req', req);
-    console.log('api');
+    console.log('api1');
 
     const body = await req.json();
 
