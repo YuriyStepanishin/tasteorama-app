@@ -1,6 +1,10 @@
+
 'use client';
 
-/* 
+import { useState } from 'react';
+import LogoutModal from '../LogoutModal/LogoutModal';
+
+/*
  Заглушка меню користувача.
 
   Реальні дані будуть
@@ -8,17 +12,31 @@
   авторизації.
 */
 
+
 export default function UserMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div>
-      <div>U</div>
+    <>
+      <div>
+        <div>UK</div>
 
-      <span>User</span>
+        <span>User</span>
 
-      <button type="button">
-        Вийти
-      </button>
-    </div>
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+        >
+          Log Out
+        </button>
+      </div>
+
+      {isOpen && (
+        <LogoutModal
+          onClose={() => setIsOpen(false)}
+        />
+      )}
+    </>
   );
 }
 

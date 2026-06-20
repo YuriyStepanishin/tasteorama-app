@@ -99,8 +99,8 @@ NEXT_PUBLIC_API_URL=https://tasteorama-server.onrender.com
 ## Команда
 
 - [Bogdan Janchenko](https://github.com/BogdanJanchenko) - Team Lead
-- [Daria Golovashova](https://github.com/DariaGolovashova) - Scrum Master
-- [Vitalina Sinkova](https://github.com/Vitalina90)
+- [Vitalina Sinkova](https://github.com/Vitalina90)- Scrum Master
+- [Daria Golovashova](https://github.com/DariaGolovashova)
 - [Yuriy Stepanishin](https://github.com/YuriyStepanishin)
 - [Tetiana Furmanets](https://github.com/tetiana-furmanets)
 - [Natan Diachuk](https://github.com/d-natan)
@@ -109,7 +109,7 @@ NEXT_PUBLIC_API_URL=https://tasteorama-server.onrender.com
 - [Marta](https://github.com/mdarntl-code)
 - [Dima Kaznadiy](https://github.com/Dima-Kaznadiy)
 - [Mykola Gumeniuk](https://github.com/GumeniukMykolaMyhailovych)
-- [Diana Harrison](https://github.com/HarrisonDiana)
+- [Diana Harrison/Tesliuk](https://github.com/HarrisonDiana)
 
 ## Супутня інформація
 

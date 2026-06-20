@@ -3,9 +3,6 @@
 import Section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
 
-import { Toaster } from 'react-hot-toast';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
 import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
 import { useState } from 'react';
 import Loader from '@/components/Loader/Loader';
@@ -26,19 +23,14 @@ const Home = () => {
     }
   };
   return (
-
-
-      <Section>
-        {loading && <Loader />}
-        <Container>
-          <h2>Demo Save</h2>
-          <SaveButton />
-        </Container>
-        <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
-      </Section>
-
-      
-
+    <Section>
+      {loading && <Loader />}
+      <Container>
+        <h2>Demo Save</h2>
+        <SaveButton />
+      </Container>
+      <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
+    </Section>
   );
 };
 
