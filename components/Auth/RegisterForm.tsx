@@ -5,14 +5,13 @@
 
 import styles from "./RegisterForm.module.css";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { register } from "@/lib/clientApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerSchema } from "@/validation/registerSchema";
-import { useUserStore } from "@/store/userStore";
+import { useAuthStore } from "@/lib/stores/userStore";
 
 
 export default function RegisterForm() {
@@ -23,8 +22,7 @@ export default function RegisterForm() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
 
-const setUser = useUserStore((state) => state.setUser);
-
+const setUser = useAuthStore((state) => state.setUser);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -198,7 +196,7 @@ className={`${styles.input} ${
 
           <p className={styles.loginText}>
             Already have an account?{" "}
-            <Link href="/login">Log in</Link>
+            <Link href="/auth/login">Log in</Link>
           </p>
         </form>
       </div>

@@ -54,7 +54,7 @@ useEffect(() => {
   className={styles.login}
 onClick={() => {
   onClose();
-  router.push("/login");
+router.push("/auth/login");
 }}
 >
   Log in
@@ -64,7 +64,7 @@ onClick={() => {
   className={styles.register}
 onClick={() => {
   onClose();
-  router.push("/register");
+  router.push("/auth/register");
 }}
 >
   Register

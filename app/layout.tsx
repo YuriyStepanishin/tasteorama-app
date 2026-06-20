@@ -8,10 +8,9 @@ import 'swiper/css/pagination';
 
 import { Toaster } from 'react-hot-toast';
 
-import AuthProvider from "@/context/AuthProvider";
-
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import AppInitializer from "@/components/AppInitializer";
 
 export const metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -59,12 +58,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
-        <AuthProvider>
+          <AppInitializer />
+
           <Toaster position="top-right" />
           <Header />
           {children}
           <Footer />
-        </AuthProvider>
       </body>
     </html>
   );
