@@ -1,177 +1,290 @@
+/** ===== Базові стилі та константи ===== */
+
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--darck-brown);
+  padding: 14px 16px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  color: var(--white);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navList,
+.linksList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navLink,
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out, cursor 0.2s ease-in-out;
+}
+
+
+/* .navLink:hover,
+.link:hover {
+  cursor: pointer;
+  color: #9b6c43;
+ } */
+
+.activeLink {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 4px;
+}
+
+/** ===== Компоненти кнопок (Загальні) ===== */
+
+/* .registerBtn,
+.btnRegister {
+  background-color: #ff9f43; */
+/* color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+} */
+
+/* .registerBtn:hover,
+.btnRegister:hover {
+  background-color: #e0852b;
+} */
+
+.burgerBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  padding: 0;
+}
+
+.burgerLine,
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+/**  ===== Адаптивна навігація (Mobile First - від 320px до 767px) ===== */
+
+.desktopNavBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
+
+.desktopNavBox .navList {
+  display: none;
+}
+
+.modalMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--darck-brown);
+  z-index: 1000;
+}
+
+.modalContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 40px; */
+  width: 100%;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  color: #fff;
+}
+
+.closeIcon {
+  font-size: 24px;
+}
+
+.menuContent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 24px;
 }
 
-@media (min-width: 1440px) {
+.linksList {
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  /* margin-bottom: 32px; */
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+}
+
+.link,
+.activeLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.activeLink {
+  font-weight: 700;
+  /* text-decoration: underline; */
+}
+
+.userSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobBtnRegister,
+.mobBtnAddRecipe,
+.deskAddRecipeBtn,
+.deskRegisterBtn {
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  min-height: 54px;
+  max-width: 372px;
+  background-color: #9b6c43;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+
+  color: var(--white);
+  margin-top: 24px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+
+}
+
+.mobBtnRegister,
+.mobBtnAddRecipe {
+  border-radius: 8px;
+  width: calc(100vw - 48px);
+  max-width: 361px;
+  margin-top: auto;
+  padding: 12px 0;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  border: none;
+}
+
+.linksList .link {
+  font-size: 18px;
+  /* Трішки більший шрифт для зручності на тач-екранах */
+}
+
+/** ===== Медіа-запити (Планшети та Десктопи) ===== */
+
+/* Планшетний розмір (від 768px) */
+@media screen and (min-width: 768px) {
   .header {
-    position: relative;
-    flex-direction: row;
-  }
-}
-
-.nav {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 25px;
+    padding: 16px 32px;
   }
 
-  .nav_buttons {
-    border: 1px solid #45563f;
-    border-radius: 30px;
-    padding: 10px 25px;
-    box-shadow: 9px 6px 4px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  .nav_button {
-    font-weight: 400;
-    font-size: 24px;
-    font-family: var(--font-heading);
-  }
-}
-
-@media (min-width: 1440px) {
-  .nav {
-    position: absolute;
-    top: 0;
-    right: 0;
-    gap: 30px;
-    margin-bottom: 13px;
-  }
-}
-
-.text_block {
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .text_block {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    margin-right: 40px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .text_block {
-    margin-right: 0px;
-    margin-top: 10px;
-    justify-content: space-between;
-  }
-}
-
-.burger_btn {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
-
-@media (min-width: 768px) {
-  .burger_btn {
+  .burgerBtn {
     display: none;
   }
-}
 
-.burger_btn_svg {
-  fill: var(--color-grey);
-}
-
-.text_name {
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 130%;
-  margin-bottom: 10px;
-}
-
-@media (min-width: 768px) {
-  .text_name {
-    width: 224px;
-    font-size: 40px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .text_name {
-    width: 520px;
-    font-size: 51px;
-    font-variant: all-small-caps;
-  }
-}
-
-.text_post {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 130%;
-  font-family: var(--font-heading);
-  margin-bottom: 15px;
-}
-
-@media (min-width: 768px) {
-  .text_post {
-    font-size: 20px;
-    width: 224px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .text_post {
-    font-size: 30px;
-    width: 338px;
-  }
-}
-
-.photo {
-  border-radius: 50%;
-}
-
-@media (min-width: 768px) {
-  .photo {
-    margin-right: 43px;
+  .modalMenu {
+    display: none !important;
   }
 
-  .hero {
+  .desktopNavBox .navList {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .navItem {
+    display: inline-flex;
     align-items: center;
   }
-}
 
-@media (min-width: 1440px) {
-  .photo {
-    margin-right: 85px;
-    width: 405px;
-    height: 405px;
+  .deskAddRecipeBtn,
+  .deskRegisterBtn {
+    border-radius: 30px;
+    padding: 10px 28px;
   }
 }
 
-.leafs {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .leafs {
-    display: block;
-    border-radius: 40%;
+/* Десктопний розмір (від 1440px) */
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 20px 80px;
   }
-}
 
-@media (min-width: 1440px) {
-  .leafs {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 290px;
-    height: 290px;
-    margin-top: 290px;
+  .desktopNavBox .navList {
+    gap: 32px;
+  }
+
+  .navLink {
+    font-size: 16px;
   }
 }

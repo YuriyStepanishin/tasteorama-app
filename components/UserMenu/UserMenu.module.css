@@ -1,0 +1,55 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background-color: #9b6c43;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.userName {
+  color: white;
+  font-size: 14px;
+}
+
+.userDivider {
+  color: #ffffff;
+  opacity: 0.3;
+  height: 39px;
+  /* Висота лінії з макета */
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutIcon {
+  color: #ffffff;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.logoutBtn:hover .logoutIcon {
+  opacity: 1;
+}

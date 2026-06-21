@@ -5,15 +5,15 @@
 
 import styles from "./RegisterForm.module.css";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { registerUser } from "@/lib/auth";
+import { register } from '@/lib/clientApi';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerSchema } from "@/validation/registerSchema";
-import { useContext } from "react";
-import { AuthContext } from "@/context/AuthProvider"; 
+import { useUserStore } from "@/store/userStore";
+
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -21,13 +21,8 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
-const auth = useContext(AuthContext);
 
-if (!auth) {
-  throw new Error("AuthProvider missing");
-}
-
-const { setUser } = auth;
+const setUser = useUserStore((state) => state.setUser);
 
   const formik = useFormik({
     initialValues: {
@@ -39,16 +34,15 @@ const { setUser } = auth;
     validationSchema: registerSchema,
 
 
-    onSubmit: async (values) => {
+   onSubmit: async (values) => {
   try {
     setLoading(true);
 
-    const data = await registerUser({
+    const data = await register({
       name: values.name,
       email: values.email,
       password: values.password,
     });
-
 
     setUser(data.user); 
 

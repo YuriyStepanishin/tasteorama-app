@@ -1,9 +1,9 @@
 export interface User {
+  _id: string;
   name: string;
-  /*
-  Тип користувача.
-  Зараз використовується як заглушка.
-  В процесі розробки буде код реалізації авторизації.
-  TASK-35
-*/
+  email: string;
+  favorites: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  avatarUrl?: string;
 }
