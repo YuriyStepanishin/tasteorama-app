@@ -11,6 +11,7 @@ import SaveButton from '@/components/Auth/SaveButton';
 
 const Home = () => {
   const [loading, setLoading] = useState<boolean>(false);
+
   const handleLoadMoreRecipes = async (): Promise<void> => {
     setLoading(true);
     try {
@@ -22,6 +23,7 @@ const Home = () => {
       setLoading(false);
     }
   };
+
   return (
     <Section>
       {loading && <Loader />}
