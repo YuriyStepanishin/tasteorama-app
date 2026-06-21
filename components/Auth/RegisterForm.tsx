@@ -5,10 +5,10 @@
 
 import styles from "./RegisterForm.module.css";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { registerUser } from "@/lib/auth";
+import { register } from '@/lib/clientApi';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerSchema } from "@/validation/registerSchema";
@@ -38,7 +38,7 @@ const setUser = useUserStore((state) => state.setUser);
   try {
     setLoading(true);
 
-    const data = await registerUser({
+    const data = await register({
       name: values.name,
       email: values.email,
       password: values.password,

@@ -2,10 +2,12 @@
 
 type LogoutModalProps = {
     onClose: () => void;
+    onConfirm: () => void;
 };
 
 export default function LogoutModal({
     onClose,
+    onConfirm,
 }: LogoutModalProps) {
     return (
         <div>
@@ -14,7 +16,7 @@ export default function LogoutModal({
 
                 <p>We will miss you!</p>
 
-                <button type="button">
+                <button type="button" onClick={onConfirm}>
                     Log out
                 </button>
 

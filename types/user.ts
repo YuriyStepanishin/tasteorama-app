@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   favorites: string[];
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+  avatarUrl?: string;
 }

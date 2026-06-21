@@ -1,10 +1,6 @@
 import { create } from 'zustand';
+import { User } from '@/types/user';
 
-type User = {
-  _id: string;
-  name: string;
-  favorites: string[];
-};
 
 type AuthStore = {
   user: User | null;

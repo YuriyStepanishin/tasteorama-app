@@ -2,7 +2,6 @@
 
 import Section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
-
 import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
 import { useState } from 'react';
 import Loader from '@/components/Loader/Loader';
