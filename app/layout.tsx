@@ -47,12 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        <Toaster position="top-right" />
-                  {children}
-      </body>
+  <Header />
+  <main>{children}</main>
+  <Footer />
+  <Toaster position="top-right" />
+</body>
     </html>
   );
 }
