@@ -1,10 +1,10 @@
-//components/Auth/SaveButton.tsx
+//components/SaveButton/SaveButton.tsx
 
 
 "use client";
 
 import { useState } from "react";
-import AuthModal from "./AuthModal";
+import AuthModal from "@/components/AuthModal/AuthModal";
 
 export default function SaveButton() {
   const [open, setOpen] = useState(false);

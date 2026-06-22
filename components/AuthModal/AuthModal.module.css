@@ -1,6 +1,5 @@
 /*components/Auth/AuthModal.module.css*/
 
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -73,7 +72,7 @@ backdrop-filter: blur(4px);
   padding: 10px;
   border-radius: 12px;
   border: none;
-  background: #b88e63;
+  background: #9B6C43;
   color: white;
   cursor: pointer;
 }
@@ -84,7 +83,7 @@ backdrop-filter: blur(4px);
 }
 
 .register:hover {
-  background: #a57c52;
+  background: #6D554B;
 }
 
 @keyframes fadeIn {
