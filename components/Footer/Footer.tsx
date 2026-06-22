@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import AuthModal from '@/components/Auth/AuthModal';
+import AuthModal from '@/components/AuthModal/AuthModal';
 import Container from '@/components/Container/Container';
 import Logo from '../Logo/Logo';
 import { useAuthStore } from '@/lib/stores/userStore'; 
