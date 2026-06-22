@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import SaveButton from '@/components/Auth/SaveButton';
+import SaveButton from '@/components/SaveButton/SaveButton';
 import Section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
 import styles from './RecipeDetails.module.css';
