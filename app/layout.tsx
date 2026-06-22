@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 const montserrat = localFont({
   src: [
@@ -47,11 +48,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster position="top-right" />
-        {/* {children} //дублював сторінку */}
+        <TanStackProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster position="top-right" />
+        </TanStackProvider>
       </body>
     </html>
   );

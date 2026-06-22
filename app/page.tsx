@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Section from '@/components/Section/Section';
+import section from '@/components/Section/Section';
 import Container from '@/components/Container/Container';
 import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
 import Loader from '@/components/Loader/Loader';
@@ -16,8 +16,7 @@ import css from './page.module.css';
 
 type Recipe = any;
 const Home = () => {
-  // const [loading, setLoading] = useState<boolean>(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [filters, setFilters] = useState<any>({
     // приклад
@@ -29,20 +28,18 @@ const Home = () => {
   const [query, setQuery] = useState('');
   // console.log('QUERY STATE:', query);
   const [hasSearched, setHasSearched] = useState(false);
-  // main version++++++++++++++++
-  // const handleLoadMoreRecipes = async (): Promise<void> => {
-  //   setLoading(true);
-  //   try {
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-  //     console.log('Recipes loaded successfully!');
-  //   } catch (error) {
-  //     console.error('Error loading recipes:', error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleLoadMoreRecipes = async (): Promise<void> => {
+    setLoading(true);
 
-  //++++++++++++
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('Recipes loaded successfully!');
+    } catch (error) {
+      console.error('Error loading recipes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSearch = async (value: string) => {
     const q = value.trim();
@@ -112,13 +109,13 @@ const Home = () => {
         <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
       </Section> */}
       {/* main version */}
-      <Section>
+      <section>
         {/* <Container> */}
         <Hero onSearch={handleSearch} loading={loading} />
         {/* </Container> */}
-      </Section>
+      </section>
       {hasSearched && (
-        <Section className={css.resultSection}>
+        <section className={css.resultSection}>
           <Container>
             <div className={css.resultsHeader}>
               <h2 className={css.resultsTitle}>Search Results for "{query}"</h2>
@@ -126,8 +123,8 @@ const Home = () => {
             </div>
 
             {recipes.length > 0 ? (
-              <div>
-                <Filters />
+              <div className={css.resultNotFound}>
+                {/* <Filters /> */}
 
                 {/* {recipes.length > 0 ? (
   <RecipeList recipes={recipes} />
@@ -142,7 +139,8 @@ const Home = () => {
               <EmptySearch onReset={handleReset} />
             )}
           </Container>
-        </Section>
+          <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
+        </section>
       )}
       {loading && <Loader />}
 

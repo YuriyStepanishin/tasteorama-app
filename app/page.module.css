@@ -7,14 +7,34 @@
   background: var(--darck-brown);
 }
 
-.searchHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
 .resultSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   background: #fbfcf8;
   padding: 40px 0;
+}
+
+.resultHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1225px;
+  margin: 0 auto 24px auto;
+  gap: 16px;
+}
+.resultTitle {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 1;
+  color: #000000;
+}
+.resuilCount {
+}
+.resultNotFound {
 }
