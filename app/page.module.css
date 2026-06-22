@@ -6,3 +6,15 @@
 .footerSection {
   background: var(--darck-brown);
 }
+
+.searchHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.resultSection {
+  background: #fbfcf8;
+  padding: 40px 0;
+}

@@ -15,6 +15,8 @@ export default function SearchBox({ onSearch, loading }: PropsSearchBox) {
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    // console.log('SUBMIT CLICKED');
+    // console.log('VALUE:', value);
     event.preventDefault();
     // const err = validate(value);
     const trimedValue = value.trim();
