@@ -1,0 +1,65 @@
+.wrapper {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emptyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 361px;
+  height: 207px;
+  padding: 40px 24px 40px 24px;
+  gap: 15px;
+  border-radius: 16px;
+  background-color: #faf3e0;
+}
+
+.emptyBox h3 {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0;
+  opacity: 1;
+  color: #000000;
+}
+
+.emptyBox button {
+  height: 54px;
+  width: 313px;
+  border: #000000 1 solid;
+  line-height: 1;
+  border-radius: 8px;
+  /* border-radius: var(--radius-i-sm); */
+  padding: 16px;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  /*transition: 0.3s.emptyBox button; */
+}
+
+.emptyBox button :hover {
+  border: #d9d9d9;
+}
+
+@media screen and (min-width: 768px) {
+  .emptyBox {
+    max-width: 704px;
+  }
+  .emptyBox button {
+    max-width: 522px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .emptyBox {
+    max-width: 1224px;
+  }
+  .emptyBox button {
+    max-width: 598px;
+  }
+}

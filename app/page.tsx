@@ -1,64 +1,3 @@
-// 'use client';
-
-// import Section from '@/components/Section/Section';
-// import Container from '@/components/Container/Container';
-
-// import LoadMoreButton from '@/components/LoadMoreBtn/LoadMoreBtn';
-// import Loader from '@/components/Loader/Loader';
-// import SaveButton from '@/components/Auth/SaveButton';
-
-// import { useState, useEffect } from 'react';
-// import { useQuery, keepPreviousData } from '@tanstack/react-query';
-// import { useDebounce } from 'use-debounce';
-
-// import { fetchRecipes } from '@/lib/clientApi';
-
-// import toast from 'react-hot-toast';
-
-// const Home = () => {
-//   const [page, setPage] = useState<number>(1);
-//   const [search, setSearch] = useState<string>('');
-//   const [category, setCategory] = useState<string>('');
-//   const [ingredient, setIngredient] = useState<string>('');
-//   const [loading, setLoading] = useState<boolean>(false);
-
-//   const [debounceSearchQuery] = useDebounce(search, 300);
-
-//   const { data, isError, error } = useQuery({
-//     queryKey: ['notes', page, debounceSearchQuery, category, ingredient],
-//     queryFn: () =>
-//       fetchRecipes({
-//         page: page,
-//         perPage: 12,
-//         search: debounceSearchQuery,
-//         category: category,
-//         ingredient: ingredient,
-//       }),
-//     placeholderData: keepPreviousData,
-//   });
-
-//   useEffect(() => {
-//     if (isError && error) {
-//       toast.error(`Oops, something went wrong while get the note.`);
-//       console.log(`Something went wrong while get the note: ${error}`);
-//     }
-//   }, [isError, error]);
-
-//   useEffect(() => {
-//     setPage(1);
-//   }, [search, category, ingredient]);
-
-//   return (
-//     <Section>
-//       <Container>
-//         <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} />
-//         {loading && <Loader />}
-//       </Container>
-//     </Section>
-//   );
-// };
-
-// export default Home;
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -84,11 +23,19 @@ import { ServerRecipe } from '@/types/serverRecipe';
 import { Category } from '@/types/category';
 import { Ingredient } from '@/types/indredient';
 
+// не знакодить імпорт, в components не знайшла файл
+// import SaveButton from '@/components/Auth/SaveButton';
+import Hero from '@/components/Hero/Hero';
+import { searchRecipes } from '@/src/api/recipes';
+import EmptySearch from '@/components/EmptySearch/EmptySearch';
+
 import toast from 'react-hot-toast';
-import css from './page.module.css';
 
 const PER_PAGE = 12;
 
+import css from './page.module.css';
+
+type Recipe = any;
 const Home = () => {
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
@@ -98,6 +45,17 @@ const Home = () => {
   const [recipes, setRecipes] = useState<ServerRecipe[]>([]);
 
   const [debounceSearchQuery] = useDebounce(search, 300);
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [filters, setFilters] = useState<any>({
+    // приклад
+    // category:
+    // time:
+  });
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  // const [isEmpty, setIsEmpty] = useState(false);
+  const [query, setQuery] = useState('');
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     setPage(1);
@@ -152,50 +110,169 @@ const Home = () => {
   const handleLoadMoreRecipes = () => {
     setPage((prevPage) => prevPage + 1);
   };
+  // const handleLoadMoreRecipes = async (): Promise<void> => {
+  //     setLoading(true);
+
+  //   try {
+  //     await new Promise((resolve) => setTimeout(resolve, 1000));
+  //     console.log('Recipes loaded successfully!');
+  //   } catch (error) {
+  //     console.error('Error loading recipes:', error);
+  //   } finally {
+  //     setLoading(false)
+  //   };
+
+  const handleSearch = async (value: string) => {
+    const q = value.trim();
+    // console.log('SEARCH TRIGGERED:', q);
+    // console.log('REQUEST PARAMS:', {
+    //   search: q,
+    //   filters,
+    // });
+
+    setQuery(q);
+    if (q.length < 2) {
+      setToastMessage('Enter at least two characters');
+      return;
+    }
+    try {
+      setLoading(true);
+      setToastMessage(null);
+
+      const data = await searchRecipes({
+        query: q,
+        filters,
+      });
+      // console.log('API RESPONSE:', data);
+
+      const results = data?.recipes ?? [];
+      //     // console.log('DATA:', data);
+      setHasSearched(true);
+
+      //     if (!recipesArray || recipesArray.length === 0) {
+      if (results.length === 0) {
+        setRecipes([]);
+        //       setIsEmpty(true);
+        setToastMessage(`No recipes found for "${q}"`);
+        return;
+      }
+
+      setRecipes(results);
+      //     // setToast(null);
+      //     setIsEmpty(false);
+    } catch (error) {
+      setRecipes([]);
+      setToastMessage('Request error');
+      //     setIsEmpty(true);
+      //
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setRecipes([]);
+    setQuery('');
+    setFilters({});
+    setHasSearched(false);
+    setToastMessage(null);
+  };
 
   const hasNextPage = data ? page < data.totalPages : false;
 
   const isLoadingMore = isFetching && page > 1;
 
   return (
-    <Section>
-      <Container>
-        <div className={css.home}>
-          {categories && ingredients && (
-            <Filters
-              recipesCount={recipesCount}
-              categories={categories}
-              ingredients={ingredients}
-              selectedCategory={category}
-              selectedIngredient={ingredient}
-              onCategoryChange={(value) => {
-                setCategory(value);
-                setPage(1);
-              }}
-              onIngredientChange={(value) => {
-                setIngredient(value);
-                setPage(1);
-              }}
-              onResetFilters={handleResetFilters}
-            />
-          )}
+    <main>
+      <Section>
+        <Hero onSearch={handleSearch} loading={loading} />
+      </Section>
+      {hasSearched && (
+        <section className={css.resultSection}>
+          <Container>
+            {/* <div className={css.resultsHeader}> */}
+            <h2 className={css.resultsTitle}>Search Results for "{query}"</h2>
+            {/* <span className={css.resultsCount}>{recipes.length} recipes</span> */}
+            {/* </div> */}
+            {categories && ingredients && (
+              <Filters
+                recipesCount={recipesCount}
+                categories={categories}
+                ingredients={ingredients}
+                selectedCategory={category}
+                selectedIngredient={ingredient}
+                onCategoryChange={(value) => {
+                  setCategory(value);
+                  setPage(1);
+                }}
+                onIngredientChange={(value) => {
+                  setIngredient(value);
+                  setPage(1);
+                }}
+                onResetFilters={handleResetFilters}
+              />
+            )}
 
-          {!isLoading && recipes.length > 0 && <RecipesList recipes={recipes} />}
+            {recipes.length > 0 ? (
+              <div className={css.resultNotFound}>
+                {/* <Filters /> */}
 
-          {isLoading && <Loader />}
+                {/* {recipes.length > 0 ? (
+  <RecipeList recipes={recipes} />
+) : (
+  <EmptySearch onReset={handleReset} />
+)} */}
+                {/* {recipes.map((recipe: any, index) => (
+                  <div key={index}>{recipe.title}
+                  </div>
+                ))} */}
+              </div>
+            ) : (
+              <EmptySearch onReset={handleReset} />
+            )}
+          </Container>
+          {/* <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={loading} /> */}
+        </section>
+      )}
+      <Section>
+        <Container>
+          <div className={css.home}>
+            {categories && ingredients && (
+              <Filters
+                recipesCount={recipesCount}
+                categories={categories}
+                ingredients={ingredients}
+                selectedCategory={category}
+                selectedIngredient={ingredient}
+                onCategoryChange={(value) => {
+                  setCategory(value);
+                  setPage(1);
+                }}
+                onIngredientChange={(value) => {
+                  setIngredient(value);
+                  setPage(1);
+                }}
+                onResetFilters={handleResetFilters}
+              />
+            )}
 
-          {!isLoading && recipes.length === 0 && <NoRecipes />}
+            {!isLoading && recipes.length > 0 && <RecipesList recipes={recipes} />}
 
-          {recipes.length > 0 && <RecipesList recipes={recipes} />}
+            {isLoading && <Loader />}
 
-          {hasNextPage && (
-            <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={isLoadingMore} />
-          )}
-        </div>
-      </Container>
-    </Section>
+            {!isLoading && recipes.length === 0 && <NoRecipes />}
+
+            {recipes.length > 0 && <RecipesList recipes={recipes} />}
+
+            {hasNextPage && (
+              <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={isLoadingMore} />
+            )}
+          </div>
+        </Container>
+      </Section>
+      {/* {toastMessage && <div className="toast">{toastMessage}</div>} */}
+    </main>
   );
 };
 
 export default Home;
-
