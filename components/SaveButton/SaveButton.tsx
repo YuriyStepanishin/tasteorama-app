@@ -1,21 +1,9 @@
-<<<<<<< HEAD:components/Auth/SaveButton.tsx
 'use client';
-
 import { useState } from 'react';
-import AuthModal from './AuthModal';
-=======
-//components/SaveButton/SaveButton.tsx
-
-
-"use client";
-
-import { useState } from "react";
-import AuthModal from "@/components/AuthModal/AuthModal";
->>>>>>> main:components/SaveButton/SaveButton.tsx
+import AuthModal from '@/components/AuthModal/AuthModal';
 
 export default function SaveButton() {
   const [open, setOpen] = useState(false);
-
   return (
     <>
       <button
@@ -30,7 +18,6 @@ export default function SaveButton() {
       >
         Save
       </button>
-
       {open && (
         <AuthModal onClose={() => setOpen(false)} />
       )}
