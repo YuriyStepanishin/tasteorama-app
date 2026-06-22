@@ -34,8 +34,8 @@ export default function RecipeDetails({
             <Image
               src={initialRecipe.imageUrl}
               alt={initialRecipe.title}
-              width={700}
-              height={500}
+              width={624}
+              height={624}
               className={styles.image}
             />
           </div>
