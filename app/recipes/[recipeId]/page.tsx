@@ -2,6 +2,7 @@ import RecipeDetails from '@/components/Recipe/RecipeDetails';
 import NotFoundRecipePage from '@/components/NotFoundRecipePage/NotFoundRecipePage';
 import { fetchRecipeById } from '@/lib/clientApi';
 import { ServerRecipe } from '@/types/serverRecipe';
+import { notFound } from 'next/navigation';
 
 interface RecipePageProps {
   params: { recipeId: string } | Promise<{ recipeId: string }>;
@@ -35,6 +36,6 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
     return <RecipeDetails initialRecipe={normalizedRecipe} recipeId={recipeId} />;
   } catch {
-    return <NotFoundRecipePage />;
+    return notFound();
   }
 }
