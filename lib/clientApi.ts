@@ -15,18 +15,35 @@ interface RegisterProps {
   password: string;
 }
 
-export const register = async ({ name, email, password }: RegisterProps): Promise<User> => {
-  const response = await nextServer.post<User>('/auth/register', { name, email, password });
+export const register = async ({
+  name,
+  email,
+  password,
+}: RegisterProps): Promise<{ user: User }> => {
+  const response = await nextServer.post('/auth/register', {
+    name,
+    email,
+    password,
+  });
+
   return response.data;
 };
 
+export const getMe = async (): Promise<{ user: User }> => {
+  const response = await nextServer.get('/auth/me', {
+    withCredentials: true,
+  });
+
+  return response.data;
+};
 interface LoginProps {
   email: string;
   password: string;
 }
 
-export const login = async ({ email, password }: LoginProps): Promise<User> => {
-  const response = await nextServer.post<User>('/auth/login', { email, password });
+
+export const login = async ({ email, password }: LoginProps): Promise<{ user: User }> => {
+  const response = await nextServer.post('/auth/login', { email, password });
   return response.data;
 };
 

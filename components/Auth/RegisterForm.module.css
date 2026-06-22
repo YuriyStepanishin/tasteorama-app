@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #faf3e0;
+  background-color: #FFFFFF;
   padding: 20px;
 }
 
@@ -15,21 +15,21 @@
   max-width: 420px;
   padding: 32px;
   border-radius: 20px;
-  background: #f3e9d7;
+  background: #faf3e0;
 }
 
 .title {
   text-align: center;
   font-size: 32px;
-  font-family: var(--font-main);
-  margin-bottom: 12px;
+  font-family: Montserrat;
+  margin-bottom: 20px;
 }
 
 .subtitle {
   text-align: center;
   font-size: 16px;
-  margin-bottom: 24px;
-  color: #555;
+  margin-bottom: 20px;
+  color: #000000;
 }
 
 .form {
@@ -39,28 +39,38 @@
 
 .label {
   font-size: 12px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .input {
-  padding: 12px 40px 12px 16px;
-  margin-bottom: 12px;
+  height: 40px;
+  padding: 0 40px 0 12px;
+  margin-bottom: 16px;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #D9D9D9;
   font-size: 16px;
   width: 100%;
   box-sizing: border-box;
-  padding-right: 40px;
-  cursor: text;
+  display: block;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .input::placeholder {
   color: #9f9f9f;
 }
 
+.input:hover {
+  border-color: #9b6c43;
+}
+
 .input:focus {
   outline: none;
-  border-color: #9b6c43;
+  border: 1.5px solid #9B6C43;
 }
 
 .passwordWrapper {
@@ -69,16 +79,19 @@
 }
 
 .eye {
-   position: absolute;
+  position: absolute;
   right: 12px;
-  top: 50%;
+  top: 36%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  color: #555;
+  color: #000000;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
 .button {
@@ -94,13 +107,22 @@
 }
 
 .button:hover {
-  background-color: #7f5635;
+  background-color: #6D554B;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .loginText {
   margin-top: 16px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.loginText a:hover {
+  opacity: 0.7;
 }
 
 .loginText a {
@@ -116,5 +138,44 @@
 }
 
 .inputError {
-  border: 1px solid red;
+    border: 1.5px solid #C80000;
+    background-color: #FFF0F0;
+    color: #C80000;
+}
+
+.loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* mobile base (320+) */
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .card {
+    max-width: 500px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1440px) {
+  .card {
+    max-width: 600px;
+  }
 }
