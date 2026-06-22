@@ -25,7 +25,7 @@ export default function DesktopNav({ isAuth, user, pathname, onLogout }: Desktop
       {!isAuth ? (
         <>
           <li>
-            <Link href="/auth/login">Log in</Link>
+            <Link href="/auth/login" className={pathname === '/auth/login' ? css.activeLink : css.link}>Log in</Link>
           </li>
           <li>
             <Link href="/auth/register" className={css.deskRegisterBtn}>Register</Link>

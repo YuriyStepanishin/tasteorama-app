@@ -3,48 +3,58 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import AuthModal from '@/components/AuthModal/AuthModal';
-import Container from '../Container/Container';
+import AuthModal from '@/components/Auth/AuthModal';
+import Container from '@/components/Container/Container';
+import Logo from '../Logo/Logo';
+import { useAuthStore } from '@/lib/stores/userStore'; 
 
-/*
-  Footer згідно ТЗ містить:
+import css from './Footer.module.css';
 
-  - логотип;
-  - копірайт;
-  - навігацію.
-
-  Поки що використовується
-  модальне вікно-заглушка.
-*/
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated); 
+
   return (
-    <div>
+    <div className={css.footerBgWrapper}>
       <Container>
-        <footer>
-          <Link href="/">Tasteorama</Link>
-
+        <footer className={css.footer}>
+          
+          <Logo/>
+          
+          <p className={css.copyright}>© 2025 CookingCompanion. All rights reserved.</p>
+          
           <nav>
-            <ul>
-              <li>
-                <Link href="/">Recipes</Link>
+            <ul className={css.navList}>
+
+              <li >
+                <Link href="/recipes" className={css.navLink}>Recipes</Link>
               </li>
 
-              <li>
-                <button type="button" onClick={() => setIsOpen(true)}>
+              <li >
+               
+                {isAuthenticated ? (
+                  <Link href="/profile" className={css.navLink}>Account</Link>
+                ) : (
+                   <button type="button" className={css.navButton} onClick={() => setIsOpen(true)}>
                   Account
-                </button>
+                </button> 
+                )}
               </li>
+
             </ul>
           </nav>
-
-          <p>© 2025 CookingCompanion. All rights reserved.</p>
+          
         </footer>
 
-        {isOpen && <AuthModal onClose={() => setIsOpen(false)} />}
+        {isOpen && (
+          <AuthModal
+            onClose={() => setIsOpen(false)}
+          />
+        )}
       </Container>
     </div>
   );
 }
+

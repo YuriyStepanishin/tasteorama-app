@@ -110,6 +110,6 @@ export const fetchRecipes = async ({
 };
 
 export const fetchRecipeById = async (recipeId: string): Promise<ServerRecipe> => {
-  const response = await directServer.get<ServerRecipe>(`/api/recipes/${recipeId}`);
-  return response.data;
+  const response = await directServer.get<{ recipe: ServerRecipe }>(`/api/recipes/${recipeId}`);
+  return response.data.recipe;
 };

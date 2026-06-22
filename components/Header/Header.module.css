@@ -1,25 +1,29 @@
-/** ===== Базові стилі та константи ===== */
+/* --- БАЗОВІ СТИЛІ ДЛЯ МОБІЛКИ (Mobile First від 320px) --- */
+
+.headerBgWrapper {
+  background-color: var(--darck-brown);
+}
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 100;
-  background-color: var(--darck-brown);
-  padding: 14px 16px;
   box-sizing: border-box;
   margin: 0 auto;
   color: var(--white);
+  padding: 14px 16px;
 }
 
-.navList {
+.desktopNavBox {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  gap: 32px;
+  width: 100%;
+}
+
+.desktopNavBox .navList {
+  display: none;
 }
 
 .navList,
@@ -30,51 +34,32 @@
   display: flex;
 }
 
+.navList {
+  align-items: center;
+  gap: 32px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--white);
+}
+
 .navLink,
 .link {
-  color: #ffffff;
+  color: var(--white);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   transition: color 0.2s ease-in-out, cursor 0.2s ease-in-out;
 }
 
-
-/* .navLink:hover,
-.link:hover {
-  cursor: pointer;
-  color: #9b6c43;
- } */
-
 .activeLink {
   border-bottom: 2px solid #fff;
   padding-bottom: 4px;
 }
 
-/** ===== Компоненти кнопок (Загальні) ===== */
-
-/* .registerBtn,
-.btnRegister {
-  background-color: #ff9f43; */
-/* color: #ffffff;
-  border: none;
-  border-radius: 30px;
-  padding: 8px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-} */
-
-/* .registerBtn:hover,
-.btnRegister:hover {
-  background-color: #e0852b;
-} */
-
+/* --- Іконкa Бургер меню --- */
 .burgerBtn {
   background: none;
   border: none;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,22 +72,11 @@
 .line {
   width: 100%;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--white);
   transition: all 0.2s ease;
 }
 
-/**  ===== Адаптивна навігація (Mobile First - від 320px до 767px) ===== */
-
-.desktopNavBox {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 100%;
-}
-
-.desktopNavBox .navList {
-  display: none;
-}
+/* --- Мобільне Бургер-меню --- */
 
 .modalMenu {
   position: fixed;
@@ -112,47 +86,32 @@
   height: 100vh;
   background-color: var(--darck-brown);
   z-index: 1000;
+  padding: 14px 16px 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .modalContainer {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
+  max-width: 393px;
+  height: 359px;
 }
 
 .menuHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 40px; */
   width: 100%;
-}
-
-.logoLink {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.logoText {
-  font-size: 20px;
-  font-weight: 700;
 }
 
 .closeButton {
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
-
-  color: #fff;
-}
-
-.closeIcon {
-  font-size: 24px;
+  color: var(--white);
 }
 
 .menuContent {
@@ -161,33 +120,23 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  gap: 24px;
+  gap: 32px;
+  width: 100%;
 }
 
 .linksList {
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  /* margin-bottom: 32px; */
-
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-
+  gap: 32px;
 }
 
 .link,
 .activeLink {
-  color: #fff;
   text-decoration: none;
   font-size: 24px;
-  font-weight: 500;
-}
-
-.activeLink {
-  font-weight: 700;
-  /* text-decoration: underline; */
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
 }
 
 .userSection {
@@ -196,56 +145,58 @@
   align-items: center;
 }
 
-.mobBtnRegister,
-.mobBtnAddRecipe,
-.deskAddRecipeBtn,
-.deskRegisterBtn {
-  border-radius: 8px;
-  padding: 16px;
-  width: 100%;
-  min-height: 54px;
-  max-width: 372px;
-  background-color: #9b6c43;
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 18px;
-
-  color: var(--white);
-  margin-top: 24px;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  /* display: inline-block; */
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-
-}
+/* Спільні стилі для мобільних кнопок */
 
 .mobBtnRegister,
 .mobBtnAddRecipe {
   border-radius: 8px;
   width: calc(100vw - 48px);
   max-width: 361px;
-  margin-top: auto;
   padding: 12px 0;
+  background-color: var(--light-brown);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
   display: block;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  text-decoration: none;
+  color: var(--white);
+  margin-top: auto;
   border: none;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+
 }
+
+.mobBtnRegister:active,
+.mobBtnAddRecipe:active {
+  box-shadow: 0 0 0 6px rgba(78, 70, 180, 0.12),
+    0 0 0 2px #fff;
+  background-color: var(--light-brown);
+}
+
+.mobBtnAddRecipe:hover,
+.mobBtnRegister:hover,
+.mobBtnAddRecipe:focus,
+.mobBtnRegister:focus {
+  background-color: var(--brown);
+}
+
 
 .linksList .link {
-  font-size: 18px;
-  /* Трішки більший шрифт для зручності на тач-екранах */
+  font-weight: 600;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
 }
 
-/** ===== Медіа-запити (Планшети та Десктопи) ===== */
+.link:hover {
+  opacity: 0.7;
+}
 
-/* Планшетний розмір (від 768px) */
+/* --- ТАБЛЕТ (від 768px) --- */
+
 @media screen and (min-width: 768px) {
   .header {
-    padding: 16px 32px;
+    padding: 14px 32px;
   }
 
   .burgerBtn {
@@ -262,22 +213,59 @@
     gap: 20px;
   }
 
+  .deskAddRecipeBtn,
+  .deskRegisterBtn {
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    background-color: var(--light-brown);
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    color: var(--white);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  }
+
+  .deskAddRecipeBtn:active,
+  .deskRegisterBtn:active {
+    box-shadow: 0 0 0 6px rgba(78, 70, 180, 0.12),
+      0 0 0 2px #fff;
+    background-color: #9b6c43;
+  }
+
+  .deskAddRecipeBtn:hover,
+  .deskRegisterBtn:hover,
+  .deskAddRecipeBtn:focus,
+  .deskRegisterBtn:focus {
+    background-color: var(--brown);
+  }
+
+  .link,
+  .activeLink {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--white);
+  }
+
   .navItem {
     display: inline-flex;
     align-items: center;
   }
-
-  .deskAddRecipeBtn,
-  .deskRegisterBtn {
-    border-radius: 30px;
-    padding: 10px 28px;
-  }
 }
 
-/* Десктопний розмір (від 1440px) */
+/*  --- ДЕСКТОП (від 1440px) ---  */
+
 @media screen and (min-width: 1440px) {
   .header {
-    padding: 20px 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 108px;
   }
 
   .desktopNavBox .navList {

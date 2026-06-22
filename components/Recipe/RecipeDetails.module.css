@@ -1,1 +1,137 @@
- 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.imageWrapper {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.text {
+  line-height: 1.6;
+}
+
+.list,
+.steps {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar {
+  padding: 20px;
+  background: #f5ecd8;
+  border-radius: 12px;
+  border: none;
+}
+
+.infoTitle {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sidebar p {
+  margin-bottom: 12px;
+}
+
+.saveButtonWrapper {
+  margin-top: 16px;
+}
+
+/* ================= TABLET ================= */
+
+@media screen and (min-width: 768px) {
+  .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+/* ================= DESKTOP ================= */
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1225px;
+    margin: 0 auto;
+  }
+
+  .imageWrapper {
+    width: 1225px;
+    height: 624px;
+
+    background: #2b2d30;
+
+    border-radius: 8px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .image {
+    width: 624px !important;
+    height: 624px !important;
+
+    object-fit: cover;
+
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 873px 320px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .sidebar {
+    width: 320px;
+    margin-top: 24px;
+
+    padding: 20px;
+
+    background: #f5ecd8;
+
+    border-radius: 12px;
+    border: none;
+  }
+}

@@ -7,8 +7,8 @@ import BurgerButton from './BurgerButton';
 import DesktopNav from './DesktopNav';
 import MobileMenu from './MobileMenu';
 import Logo from '../Logo/Logo';
-import { User } from '@/types/user';
 import Container from '@/components/Container/Container';
+import { useAuthStore } from '@/lib/stores/userStore';
 
 import css from './Header.module.css';
 
@@ -16,13 +16,8 @@ import css from './Header.module.css';
 export default function Header() {
   const pathname = usePathname();
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
-  // --- ЗАГЛУШКИ ДЛЯ ТЕСТУВАННЯ (Змінюй на реальний стейт/хуки) ---
-  const isAuthenticated = true; // true зареєстрований false ні
-  const user = isAuthenticated ? ({ name: 'Max', email: 'max@test.com', _id:'mock-id' } as User) : null;
-  const logout = () => alert('Вихід виконано!');
-  // ------------------------------------------------
-
+  const {isAuthenticated, user, logout} = useAuthStore(); 
+ 
   useEffect(() => {
     document.body.style.overflow = isBurgerOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -40,17 +35,17 @@ export default function Header() {
 
   const closeMenu = () => setIsBurgerOpen(false);
   
-  const handleDesktopLogout = () => { 
-    logout(); 
+  const handleDesktopLogout = async() => { 
+    await logout(); 
   };
 
-  const handleMobileLogout = () => { 
-    logout(); 
+  const handleMobileLogout = async() => { 
+    await logout(); 
     closeMenu(); 
   };
 
   return (
-    <div>
+    <div className={css.headerBgWrapper}>
       <Container >
         <header className={css.header}>
           

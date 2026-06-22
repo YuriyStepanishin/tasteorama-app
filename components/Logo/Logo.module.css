@@ -4,6 +4,13 @@
   gap: 5px;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  color: var(--white);
+  padding: 8px 12px;
+}
+
+.logoIcon:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 
 .logoLink:hover {
