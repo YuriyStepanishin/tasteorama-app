@@ -12,9 +12,6 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
-import AppInitializer from '@/components/AppInitializer';
-
-
 
 export const metadata = {
   metadataBase: new URL("http://localhost:3000"),
