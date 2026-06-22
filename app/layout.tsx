@@ -10,7 +10,13 @@ import { Toaster } from 'react-hot-toast';
 
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+
+export const metadata = {
+  metadataBase: new URL("http://localhost:3000"),
+  title: "Tasteorama",
+};
 
 const montserrat = localFont({
   src: [
@@ -52,12 +58,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
-        <TanStackProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <Toaster position="top-right" />
-        </TanStackProvider>
+<TanStackProvider>
+  <Header />
+  {children}
+  <Footer />
+  <Toaster position="top-right" />
+</TanStackProvider>
       </body>
     </html>
   );

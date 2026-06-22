@@ -1,7 +1,17 @@
+<<<<<<< HEAD:components/Auth/SaveButton.tsx
 'use client';
 
 import { useState } from 'react';
 import AuthModal from './AuthModal';
+=======
+//components/SaveButton/SaveButton.tsx
+
+
+"use client";
+
+import { useState } from "react";
+import AuthModal from "@/components/AuthModal/AuthModal";
+>>>>>>> main:components/SaveButton/SaveButton.tsx
 
 export default function SaveButton() {
   const [open, setOpen] = useState(false);

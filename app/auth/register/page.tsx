@@ -1,3 +1,5 @@
+//app/auth/register/page.tsx
+
 import RegisterForm from "@/components/Auth/RegisterForm";
 
 export const generateMetadata = () => {

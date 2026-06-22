@@ -1,0 +1,24 @@
+:root {
+  /* Typography */
+  --font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  --second-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Breakpoints (mobile-first) */
+  --bp-mobile-min: 320px;
+  --bp-mobile-adaptive: 393px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1440px;
+
+  /* Layout */
+  --container-padding-mobile: 16px;
+  --container-padding-tablet: 32px;
+  --container-padding-desktop: 107.5px, 48px;
+  --container-max-width: 1440px;
+
+  /* Transitions */
+  --transition-base: 0.2s ease-in-out;
+}

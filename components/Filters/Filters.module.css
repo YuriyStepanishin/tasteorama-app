@@ -1,0 +1,104 @@
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 361px;
+}
+
+@media screen and (min-width: 768px) {
+  .filters {
+    max-width: 704px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filters {
+    max-width: 1225px;
+  }
+}
+
+.recipesCount {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  color: #050505;
+}
+
+.mobileFilterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.desktopControls {
+  display: none;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #050505;
+}
+
+.resetButton {
+  border: none;
+  background: transparent;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.select {
+  width: 180px;
+  height: 44px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+
+  background: #fff;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 155%;
+  color: var(--gray);
+
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #9b6cff;
+}
+
+@media screen and (min-width: 1440px) {
+  .mobileFilterButton {
+    display: none;
+  }
+
+  .desktopControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .filters {
+    justify-content: space-between;
+  }
+}

@@ -1,18 +1,21 @@
+interface ServerRecipeIngredient {
+  ingredient: string;
+  ingredientAmount: string;
+  _id: string;
+}
+
 export interface ServerRecipe {
   _id: string;
-  name: string;
-  decr: string;
-  cookiesTime: number;
-  cals: number | null;
+  title: string;
   category: string;
-  ingredients: {
-    ingredient: string;
-    ingredientAmount: string;
-    _id: string;
-  }[];
-  instruction: string;
-  recipeImg: string | null;
   owner: string;
+  area: string;
+  instructions: string;
+  description: string;
+  thumb: string;
+  time: string;
+  cals: number | null;
+  ingredients: ServerRecipeIngredient[];
   createdAt: string;
   updatedAt: string;
 }
