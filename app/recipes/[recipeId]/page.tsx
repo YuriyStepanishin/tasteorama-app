@@ -1,4 +1,30 @@
 import RecipeDetails from '@/components/Recipe/RecipeDetails';
+<<<<<<< HEAD
+
+export default function RecipePage() {
+  const mockRecipe = {
+    _id: '1',
+    title: 'French Omelette',
+    imageUrl: '/photos/404-notFound.jpg',
+    description:
+      'A French omelette is known for its soft texture and delicate taste.',
+    category: 'Breakfast',
+    cookingTime: '7 min',
+    calories: '200 kcal',
+    ingredients: [
+      'Eggs — 3',
+      'Butter — 15 g',
+      'Salt — pinch',
+      'Black pepper — pinch',
+    ],
+    steps: [
+      'Crack eggs into a bowl.',
+      'Whisk until smooth.',
+      'Melt butter in a pan.',
+      'Cook omelette gently.',
+      'Fold and serve.',
+    ],
+=======
 import NotFoundRecipePage from '@/components/NotFoundRecipePage/NotFoundRecipePage';
 import { fetchRecipeById } from '@/lib/clientApi';
 import { ServerRecipe } from '@/types/serverRecipe';
@@ -24,9 +50,18 @@ function normalizeRecipe(recipe: ServerRecipe) {
       .split(/\r?\n/)
       .map((line) => line.trim())
       .filter(Boolean),
+>>>>>>> main
   };
-}
 
+<<<<<<< HEAD
+  return (
+    <RecipeDetails
+      initialRecipe={mockRecipe}
+      recipeId={mockRecipe._id}
+    />
+  );
+}
+=======
 export default async function RecipePage({ params }: RecipePageProps) {
   const { recipeId } = await params;
 
@@ -39,3 +74,4 @@ export default async function RecipePage({ params }: RecipePageProps) {
     return notFound();
   }
 }
+>>>>>>> main
