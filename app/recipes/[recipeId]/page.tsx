@@ -19,7 +19,7 @@ function normalizeRecipe(recipe: ServerRecipe) {
     ingredients: recipe.ingredients.map(
       ({ ingredient, ingredientAmount }) => `${ingredient} — ${ingredientAmount}`
     ),
-    steps: recipe.instruction
+    steps: recipe.instructions
       .split(/\r?\n/)
       .map((line) => line.trim())
       .filter(Boolean),
