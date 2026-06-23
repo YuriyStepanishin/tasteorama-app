@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const cookieStore = await cookies();
 
-    const res = await api.get('recipes/favorites', {
+    const res = await api.get('/api/recipes/favorites', {
       headers: {
         Cookie: cookieStore.toString(),
       },

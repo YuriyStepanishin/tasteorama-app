@@ -8,7 +8,7 @@ export default function EmptySearch({ onReset }: emptySearchProps) {
     <div className={css.wrapper}>
       <div className={css.emptyBox}>
         <h3>
-          We're sorry! We were not able <br /> to find a match.
+          We&apos;re sorry! We were not able <br /> to find a match.
         </h3>
         <button onClick={onReset}>Reset serach and filters</button>
       </div>
