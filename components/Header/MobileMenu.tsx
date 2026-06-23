@@ -77,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose, isAuth, user, onLogout }: 
             ) : (
               <>
                   <li>
-                  <Link href="/auth/login" className={css.link} onClick={onClose}>
+                  <Link href="/auth/login" className={pathname === '/auth/login' ? css.activeLink : css.link} onClick={onClose}>
                     Log in
                   </Link>
                   </li>

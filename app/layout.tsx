@@ -50,7 +50,11 @@ const dmSans = localFont({
   variable: '--font-heading',
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>

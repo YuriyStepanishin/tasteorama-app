@@ -1,7 +1,9 @@
+import { notFound } from 'next/navigation';
 import RecipeDetails from '@/components/Recipe/RecipeDetails';
-import NotFoundRecipePage from '@/components/NotFoundRecipePage/NotFoundRecipePage';
 import { fetchRecipeById } from '@/lib/clientApi';
 import { ServerRecipe } from '@/types/serverRecipe';
+
+export const dynamic = 'force-dynamic';
 
 interface RecipePageProps {
   params: { recipeId: string } | Promise<{ recipeId: string }>;
@@ -31,10 +33,10 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
   try {
     const recipe = await fetchRecipeById(recipeId);
+    if (!recipe) notFound();
     const normalizedRecipe = normalizeRecipe(recipe);
-
     return <RecipeDetails initialRecipe={normalizedRecipe} recipeId={recipeId} />;
   } catch {
-    return <NotFoundRecipePage />;
+    notFound();
   }
 }
