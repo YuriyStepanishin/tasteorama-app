@@ -1,0 +1,480 @@
+ .formContainer {
+     min-width: 320px;
+     margin: 0 auto;
+     padding: 48px 16px;
+     font-family: var(--font-main), sans-serif;
+ }
+
+ .mainTitle {
+     font-weight: 600;
+     font-size: 40px;
+     color: var(--black);
+     padding-bottom: 16px;
+ }
+
+ .sectionTitle {
+     font-weight: 600;
+     font-size: 24px;
+     color: var(--black);
+     margin-bottom: 16px;
+     margin-top: 24px;
+ }
+
+ .photoUploadSection {
+     display: flex;
+     flex-direction: column;
+     /* gap: 8px; */
+ }
+
+ .uploadLabelText {
+     font-weight: 600;
+     font-size: 24px;
+     color: var(--black);
+     margin-bottom: 16px;
+     margin-top: 24px;
+ }
+
+ .photoUploadLabel {
+     cursor: pointer;
+     display: block;
+     width: 100%;
+ }
+
+ .hiddenInput {
+     display: none;
+ }
+
+ .photoDropzone {
+     width: 100%;
+     height: 383px;
+     border-radius: 16px;
+     background: #9f9f9f;
+ }
+
+ .placeholderContainer {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100%;
+ }
+
+ .cameraIcon {
+     width: 64px;
+     height: 64px;
+     stroke: var(--black);
+     fill: transparent;
+ }
+
+ .previewImage {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+
+ /* .generalInfoSection,
+.ingredientsSection,
+.instructionsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+} */
+
+ .inputGroup {
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+     margin-bottom: 16px;
+ }
+
+ .labelName {
+     font-weight: 400;
+     font-size: 18px;
+     color: var(--black);
+ }
+
+
+ /* 
+.inputGroup label,
+.inputLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+}
+*/
+
+ .inputField {
+     font-weight: 400;
+     font-size: 18px;
+     color: #595d62;
+     border: 1px solid #d9d9d9;
+     border-radius: 8px;
+     padding: 12px;
+     width: 100%;
+     height: 46px;
+     max-height: 48px;
+     background-color: #fff;
+     outline: none;
+     transition: border-color 0.2s ease;
+ }
+
+ .textareaField {
+     font-weight: 400;
+     font-size: 18px;
+     color: #595d62;
+     border: 1px solid #d9d9d9;
+     border-radius: 8px;
+     padding: 12px;
+     width: 100%;
+     height: 144px;
+     background-color: #fff;
+     resize: none;
+     outline: none;
+     transition: border-color 0.2s ease;
+ }
+
+ .selectField {
+     appearance: none;
+     -webkit-appearance: none;
+     border: 1px solid #d9d9d9;
+     border-radius: 8px;
+     padding: 12px 40px 12px 12px;
+     width: 172px;
+     height: 48px;
+     max-height: 48px;
+     background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23595D62' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+     font-weight: 400;
+     font-size: 18px;
+     color: #595d62;
+     outline: none;
+     transition: border-color 0.2s ease;
+     cursor: pointer;
+ }
+
+ .inputField:hover,
+ .textareaField:hover,
+ .selectField:hover,
+ .instructionField:hover {
+     border-color: #b3b3b3;
+ }
+
+ .inputField:focus,
+ .textareaField:focus,
+ .selectField:focus,
+ .instructionField:focus {
+     border-color: #6a539d;
+     /* Purple border from Figma screenshot */
+ }
+
+ .inputError {
+     border-color: #ff4d4f !important;
+ }
+
+ .errorMessage {
+     color: #ff4d4f;
+     font-size: 12px;
+     margin-top: 4px;
+ }
+
+
+ /* --- Додані стилі для вирівнювання Calories та Category в один ряд --- */
+
+ .rowInputs {
+     display: flex;
+     gap: 17px;
+     /* Відстань між полями */
+     width: 100%;
+     max-width: 361px;
+     /* Вирівнюємо загальну ширину по ширині інших інпутів */
+ }
+
+ .rowInputs>div {
+     flex: 1;
+     /* Рівномірно ділить простір: 50% на Calories, 50% на Category */
+     min-width: 0;
+ }
+
+ .selectField {
+     width: 100%;
+     /* Перевизначаємо 172px на 100%, щоб поле ідеально адаптувалося під свою половину */
+ }
+
+
+ /*
+.inputField,
+.selectField,
+.textareaField {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--light-gray-3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--black-2);
+    background-color: var(--white);
+    outline: none;
+    font-family: inherit;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+    color: var(--gray-3);
+}
+
+.textareaField {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.rowInputs {
+    display: flex;
+    gap: 12px;
+}
+
+.rowInputs>div {
+    flex: 1;
+}
+*/
+
+ .ingredientsList {
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+ }
+
+ .ingredientAddBlock {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+     padding-bottom: 12px;
+ }
+
+ .addedIngredientsContainer {
+     display: flex;
+     flex-direction: column;
+     margin-top: 16px;
+ }
+
+ .addedIngredientsContainer.emptyList {
+     display: none;
+ }
+
+ .addedIngredientsHeader {
+     display: grid;
+     grid-template-columns: 1fr 1fr 24px;
+     gap: 16px;
+     border-bottom: 1px solid #d9d9d9;
+     padding-bottom: 8px;
+     margin-bottom: 8px;
+ }
+
+ .headerName,
+ .headerAmount {
+     font-weight: 600;
+     font-size: 16px;
+     color: var(--black);
+ }
+
+ .headerAction {
+     width: 24px;
+ }
+
+ .addedIngredientRow {
+     display: grid;
+     grid-template-columns: 1fr 1fr 24px;
+     gap: 16px;
+     align-items: center;
+     border-bottom: 1px solid #d9d9d9;
+     padding: 12px 0;
+ }
+
+ .rowName {
+     font-size: 16px;
+     color: #595d62;
+ }
+
+ .rowAmount {
+     font-size: 16px;
+     color: #595d62;
+ }
+
+ .instructionTitle {
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+     font-size: 24px;
+     color: #000;
+     margin-top: 40px;
+     margin-bottom: 16px;
+ }
+
+ .instructionField {
+     font-weight: 400;
+     font-size: 18px;
+     color: #595d62;
+     border: 1px solid #d9d9d9;
+     border-radius: 8px;
+     padding: 12px;
+     width: 100%;
+     height: 144px;
+     background-color: #fff;
+     margin-bottom: 40px;
+     resize: none;
+     outline: none;
+     transition: border-color 0.2s ease;
+ }
+
+ .addIngredientBtn,
+ .submitButton {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 44px;
+     font-family: 'Montserrat', sans-serif;
+     font-weight: 600;
+     font-size: 16px;
+     text-align: center;
+     color: #fff;
+     border: 1px solid transparent;
+     border-radius: 8px;
+     padding: 12px 16px;
+     width: 100%;
+     background: #9b6c43;
+     cursor: pointer;
+     transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease, outline 0.2s ease;
+ }
+
+ .addIngredientBtn:hover,
+ .addIngredientBtn:focus,
+ .submitButton:hover,
+ .submitButton:focus {
+     background-color: #825a38;
+     outline: none;
+ }
+
+ .addIngredientBtn:active,
+ .submitButton:active {
+     background-color: #9b6c43;
+     outline: 2px solid #ffffff;
+     outline-offset: -2px;
+ }
+
+ .addIngredientBtn:disabled,
+ .submitButton:disabled {
+     background-color: transparent;
+     color: #9f9f9f;
+     border: 1px solid #9f9f9f;
+     cursor: not-allowed;
+ }
+
+ .removeIngredientBtn {
+     background: none;
+     border: none;
+     color: #595D62;
+     font-size: 20px;
+     cursor: pointer;
+     padding: 0 8px;
+     transition: color 0.2s;
+ }
+
+ .removeIngredientBtn:hover {
+     color: #ff4d4f;
+ }
+
+
+
+ @media (min-width: 768px) {
+     .formContainer {
+         max-width: 768px;
+         padding: 48px 32px;
+     }
+
+     .addedIngredientsContainer.emptyList {
+         display: flex;
+     }
+
+     .photoUploadSection {
+         width: 100%;
+         margin-top: 0;
+     }
+
+     .photoDropzone {
+         width: 100%;
+         height: 383px;
+     }
+
+     .sectionTitle {
+         margin-bottom: 32px;
+     }
+
+     .rowInputs {
+         max-width: 100%;
+         gap: 32px;
+     }
+
+     .ingredientAddBlock {
+         display: flex;
+         flex-direction: row;
+         gap: 32px;
+         align-items: flex-start;
+     }
+
+     .ingredientAddBlock>div {
+         flex: 1;
+         min-width: 0;
+     }
+
+     .addIngredientBtn {
+         align-self: flex-end;
+         width: calc(50% - 16px);
+     }
+
+     .submitButton {
+         width: 100%;
+     }
+
+     .addedIngredientsContainer {
+         width: calc(50% - 16px);
+     }
+
+     .addedIngredientsHeader {
+         display: grid;
+         grid-template-columns: 1fr 80px 24px;
+         gap: 16px;
+     }
+
+     .addedIngredientRow {
+         display: grid;
+         grid-template-columns: 1fr 80px 24px;
+         gap: 16px;
+     }
+ }
+
+ @media (min-width: 1440px) {
+     .formContainer {
+         max-width: 1226px;
+         padding: 48px 107px;
+     }
+
+     .formContent {
+         display: flex;
+         flex-direction: row-reverse;
+         justify-content: space-between;
+         align-items: flex-start;
+         gap: 32px;
+     }
+
+     .photoUploadSection {
+         width: 361px;
+         flex-shrink: 0;
+     }
+
+     .formDesktopLeft {
+         flex: 1;
+         max-width: 809px;
+         min-width: 0;
+     }
+
+     .mainTitle {
+         font-size: 48px;
+         margin-bottom: 32px;
+     }
+ }

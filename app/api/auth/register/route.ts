@@ -16,16 +16,21 @@ export async function POST(req: NextRequest) {
 
     if (setCookie) {
       const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
+      const skipKeys = new Set(['expires', 'max-age', 'path', 'httponly', 'secure', 'samesite', 'domain']);
+
       for (const cookieStr of cookieArray) {
         const parsed = parse(cookieStr);
-
+        const maxAge = parsed['Max-Age'] ? Number(parsed['Max-Age']) : undefined;
         const options = {
           expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
-          path: parsed.Path,
-          maxAge: Number(parsed['Max-Age']),
+          path: parsed.Path || '/',
+          ...(maxAge !== undefined && { maxAge }),
         };
-        if (parsed.accessToken) cookieStore.set('accessToken', parsed.accessToken, options);
-        if (parsed.refreshToken) cookieStore.set('refreshToken', parsed.refreshToken, options);
+        for (const [key, value] of Object.entries(parsed)) {
+          if (!skipKeys.has(key.toLowerCase()) && value) {
+            cookieStore.set(key, String(value), options);
+          }
+        }
       }
       return NextResponse.json(apiRes.data, { status: apiRes.status });
     }
