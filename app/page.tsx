@@ -9,7 +9,7 @@ import Container from '@/components/Container/Container';
 import Loader from '@/components/Loader/Loader';
 import Filters from '@/components/Filters/Filters';
 import RecipesList from '@/components/RecipesList/RecipesList';
-import NoRecipes from '@/components/NoRecipes/NoRecipes';
+import EmptySearch from '@/components/EmptySearch/EmptySearch';
 import Pagination from '@/components/Pagination/Pagination';
 import Hero from '@/components/Hero/Hero';
 
@@ -87,6 +87,12 @@ const Home = () => {
       <Section>
         <Container>
           <div className={css.home}>
+            {search.length === 0 ? (
+              <h3 className={css.h3}>Recipes</h3>
+            ) : (
+              <h3 className={css.h3}>{`Recipes for "${search}"`}</h3>
+            )}
+
             {categories && ingredients && (
               <Filters
                 recipesCount={recipesCount}
@@ -110,7 +116,7 @@ const Home = () => {
 
             {!isLoading && recipes.length > 0 && <RecipesList recipes={recipes} />}
 
-            {!isLoading && recipes.length === 0 && <NoRecipes />}
+            {!isLoading && recipes.length === 0 && <EmptySearch onReset={handleResetFilters} />}
 
             {totalPages > 1 && (
               <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
