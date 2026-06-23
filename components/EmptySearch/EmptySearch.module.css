@@ -49,17 +49,17 @@
 
 @media screen and (min-width: 768px) {
   .emptyBox {
-    max-width: 704px;
+    width: 704px;
   }
   .emptyBox button {
-    max-width: 522px;
+    width: 447px;
   }
 }
 @media screen and (min-width: 1440px) {
   .emptyBox {
-    max-width: 1224px;
+    width: 1224px;
   }
   .emptyBox button {
-    max-width: 598px;
+    width: 550px;
   }
 }

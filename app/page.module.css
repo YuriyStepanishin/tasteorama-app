@@ -19,7 +19,7 @@
   padding: 40px 0;
 }
 
-.resultHeader {
+/* .resultHeader {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   max-width: 1225px;
   margin: 0 auto 24px auto;
   gap: 16px;
-}
+} */
 .resultsTitle {
   font-family: 'Montserrat';
   font-weight: 600;
@@ -38,8 +38,7 @@
   color: #000000;
   padding-bottom: 48px;
 }
-.resultCount {
-}
+
 .resultNotFound {
   max-width: 361px;
   padding-bottom: 48px;

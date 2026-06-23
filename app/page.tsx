@@ -93,14 +93,31 @@ const Home = () => {
     staleTime: Infinity,
   });
 
-  const recipesCount = data?.totalRecipes ?? 0;
+  // const recipesCount = data?.totalRecipes ?? 0;
+const recipesCount = hasSearched ? recipes.length : (data?.totalRecipes ?? 0);
+// +++++++++++++++було , але дублювання
+  // useEffect(() => {
+  //   if (!data) return;
 
+  //   setRecipes((prev) => (page === 1 ? data.recipes : [...prev, ...data.recipes]));
+  // }, [data, page]);
+  // +++++++++++++++++++++++++++
+
+  //++++++++++++++++ замінила на
   useEffect(() => {
     if (!data) return;
 
-    setRecipes((prev) => (page === 1 ? data.recipes : [...prev, ...data.recipes]));
-  }, [data, page]);
+    setRecipes((prev) => {
+      const map = new Map();
 
+      const combined = page === 1 ? data.recipes : [...prev, ...data.recipes];
+
+      combined.forEach((r) => map.set(r._id, r));
+
+      return Array.from(map.values());
+    });
+  }, [data, page]);
+  // ++++++++++++++++++++++++++++++++
   const handleResetFilters = () => {
     setCategory('');
     setIngredient('');
@@ -194,25 +211,6 @@ const Home = () => {
             <h2 className={css.resultsTitle}>Search Results for "{query}"</h2>
             {/* <span className={css.resultsCount}>{recipes.length} recipes</span> */}
             {/* </div> */}
-            {categories && ingredients && (
-              <Filters
-                recipesCount={recipesCount}
-                categories={categories}
-                ingredients={ingredients}
-                selectedCategory={category}
-                selectedIngredient={ingredient}
-                onCategoryChange={(value) => {
-                  setCategory(value);
-                  setPage(1);
-                }}
-                onIngredientChange={(value) => {
-                  setIngredient(value);
-                  setPage(1);
-                }}
-                onResetFilters={handleResetFilters}
-              />
-            )}
-
             {recipes.length > 0 ? (
               <div className={css.resultNotFound}>
                 {/* <Filters /> */}
@@ -262,7 +260,8 @@ const Home = () => {
 
             {!isLoading && recipes.length === 0 && <NoRecipes />}
 
-            {recipes.length > 0 && <RecipesList recipes={recipes} />}
+           {/* наступна строка дублює, закоментувала, працює */}
+            {/* {recipes.length > 0 && <RecipesList recipes={recipes} />} */}
 
             {hasNextPage && (
               <LoadMoreButton onLoadMore={handleLoadMoreRecipes} isLoading={isLoadingMore} />

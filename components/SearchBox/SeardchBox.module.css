@@ -6,13 +6,17 @@
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 16px 8px 8px 16px;
+  /* padding: 16px 8px 8px 16px; */
   gap: 12px;
 }
 
+.inputWraper {
+  display: flex;
+  flex-direction: column;
+}
 .searchBoxInput {
-  width: 100%;
-  max-width: 329px;
+  /* width: 100%; */
+  width: 329px;
   height: 46px;
   border: 1px solid #9f9f9f;
   /* border-radius: var(--radius-i-sm); */
@@ -42,8 +46,14 @@
   color: #000000;
 }
 
-.searchBoxInput.errorInput {
+.searchBoxInput.errorInput,
+.searchBoxInput.errorInput:hover,
+.searchBoxInput.errorInput:focus {
   border: 1px solid #e74c3c;
+  color: #e74c3c;
+}
+
+.searchBoxInput.errorInput::placeholder {
   color: #e74c3c;
 }
 
@@ -75,37 +85,38 @@
   font-family: 'Montserrat';
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.55;
+  line-height: 1;
   letter-spacing: 0;
   width: 100%;
-  max-width: 361px;
-
+  /* max-width: 361px; */
+height: 8px;
   color: #c80000;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 }
 
 @media screen and (min-width: 768px) {
   .searchBox {
-    max-width: 768px;
+    width: 671px;
+    padding: 8px 0 8px 0;
     flex-direction: column;
     align-items: center;
   }
   .searchBoxInput {
-    max-width: 471px;
+   width: 471px;
   }
   .searchBoxButton {
-    max-width: 176px;
+    width: 176px;
   }
 }
 @media screen and (min-width: 1440px) {
   .searchBox {
-    max-width: 1440px;
+  width: 661px;
   }
   .searchBoxInput {
-    max-width: 459px;
+    width: 459px;
     flex-wrap: nowrap;
   }
   .searchBoxButton {
-    max-width: 190px;
+    width: 190px;
   }
 }

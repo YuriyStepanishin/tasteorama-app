@@ -37,10 +37,10 @@ export default function SearchBox({ onSearch, loading }: PropsSearchBox) {
 
   return (
     <form className={css.searchBox} onSubmit={handleSubmit}>
-      <div>
+      <div className={css.inputWraper}>
         <input
-          // className={`&{css.searchBoxInput} $ {error ? css.errorInput : ''}`}
-          className={css.searchBoxInput}
+          className={`${css.searchBoxInput} $ {error ? css.errorInput : ''}`}
+          // className={css.searchBoxInput}
           type="text"
           placeholder="Search recipes"
           value={value}
