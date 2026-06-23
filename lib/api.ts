@@ -8,5 +8,3 @@ export const nextServer = axios.create({
 export const directServer = axios.create({
   baseURL: 'https://tasteorama-server.onrender.com',
 });
-
-

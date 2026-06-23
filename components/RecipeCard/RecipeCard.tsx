@@ -35,9 +35,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 
       <p className={styles.description}>{recipe.description}</p>
 
-      <p className={styles.calories}>
-        {recipe.cals ? `~${recipe.cals} cals` : 'No information calories'}
-      </p>
+      <p className={styles.calories}>{recipe.cals ? `~${recipe.cals} cals` : '- cals'}</p>
 
       <div className={styles.actions}>
         <Link href={`/recipes/${recipe._id}`} className={styles.learnMore}>

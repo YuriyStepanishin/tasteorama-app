@@ -8,7 +8,6 @@ import css from './LoginForm.module.css';
 import { useRouter } from 'next/navigation';
 import { login } from '@/lib/clientApi';
 import { useAuthStore } from '../../../lib/stores/userStore';
-import Image from 'next/image';
 import { LoginProps } from '@/lib/clientApi';
 import { validationLoginSchema } from '../../../validation/LoginFormValidation';
 import { AxiosError } from 'axios';

@@ -19,18 +19,16 @@ export default function GlobalError({ error, reset }: { error: Error; reset: () 
   // </div>
   //   );
   // }
-  return (
+ 
     //my version
-    <html>
-      <body>
-        <div style={{ textAlign: 'center', padding: 40 }}>
-          <h2>Something went wrong 😢</h2>
-          <p>{error.message}</p>
-          <button onClick={() => reset()}>Try again</button>
-        </div>
-      </body>
-    </html>
+    return (
+    <div style={{ textAlign: 'center', padding: 40 }}>
+      <h2>Something went wrong 😢</h2>
+      <p>{error.message}</p>
+      <button onClick={() => reset()}>Try again</button>
+    </div>
   );
+
   //   return (
   //     <div>
   //       <h2>Something went wrong 😢</h2>

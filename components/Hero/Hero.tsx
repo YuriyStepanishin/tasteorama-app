@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import section from '@/components/Section/Section';
 // import container from '@/components/Container/Container';
 import css from './Hero.module.css';
 

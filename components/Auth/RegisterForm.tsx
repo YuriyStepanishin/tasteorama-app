@@ -48,8 +48,9 @@ setUser(data.user);
     toast.success("Registration successful 🎉");
 
     router.push("/");
-  } catch (err: any) {
-    toast.error(err.message || "User already exists");
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : 'User already exists';
+    toast.error(errorMessage || 'User already exists');
   } finally {
     setLoading(false);
   }
