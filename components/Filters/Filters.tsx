@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import styles from './Filters.module.css';
 import Image from 'next/image';
-import type { Category, Ingredient } from '@/types/recipe';
+import { Category } from '@/types/category';
+import { Ingredient } from '@/types/indredient';
 
 interface FiltersProps {
   recipesCount: number;
