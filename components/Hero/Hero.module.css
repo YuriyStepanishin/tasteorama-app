@@ -10,7 +10,7 @@
   padding: 108px 32px;
   gap: 24px;
 
-  background: url('/photos/hero-img.jpg') center -130px/cover no-repeat;
+  background: url('/photos/hero-img.jpg') center /cover no-repeat;
   /* background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
@@ -55,9 +55,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  /* .hero {
-    max-width: 768px;
-  } */
+  .hero {
+    /* max-width: 768px; */
+   background: url('/photos/hero-img.jpg') center -50px / cover no-repeat;
+  } 
 
   /* .heroContent {
     padding: 0 20px;
