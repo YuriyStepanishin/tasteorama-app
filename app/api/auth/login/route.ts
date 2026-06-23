@@ -7,9 +7,6 @@ import { logErrorResponse } from '../../_utils/utils';
 
 export async function POST(req: NextRequest) {
   try {
-    // console.log('req', req);
-    // console.log('api1');
-
     const body = await req.json();
 
     const apiRes = await api.post('/auth/login', body);
@@ -25,7 +22,6 @@ export async function POST(req: NextRequest) {
       for (const cookieStr of cookieArray) {
         const parsed = parse(cookieStr);
 
-        const maxAge = parsed['Max-Age'] ? Number(parsed['Max-Age']) : undefined;
         const options = {
           expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
           path: parsed.Path || '/',
@@ -40,8 +36,6 @@ export async function POST(req: NextRequest) {
           }
         }
       }
-
-      console.log('[LOGIN] cookieStore after set:', cookieStore.getAll());
 
       return NextResponse.json(apiRes.data, { status: apiRes.status });
     }

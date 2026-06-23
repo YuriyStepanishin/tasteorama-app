@@ -8,22 +8,17 @@ import css from './LoginForm.module.css';
 import { useRouter } from 'next/navigation';
 import { login } from '@/lib/clientApi';
 import { useAuthStore } from '../../../lib/stores/userStore';
+
 import { LoginProps } from '@/lib/clientApi';
 import { validationLoginSchema } from '../../../validation/LoginFormValidation';
 import { AxiosError } from 'axios';
-// import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from '@tanstack/react-query';
+import Loader from '@/components/Loader/Loader';
 
 const Login = () => {
-  console.log('render Login form');
-
   const router = useRouter();
-  // const [error, setError] = useState<string | null>(null);
   const fieldId = useId();
   const [showPassword, setShowPassword] = useState(false);
   const setUser = useAuthStore((state) => state.setUser);
-
-  // ДОДАНО: стор обраних рецептів, щоб одразу підвантажити favorites після логіну
-  // const loadFavorites = useFavoritesStore((state) => state.loadFavorites);
 
   const mutation = useMutation({
     mutationFn: login,
@@ -32,16 +27,23 @@ const Login = () => {
         if (res._id) {
           localStorage.setItem('userId', res._id);
         }
-        setUser(res);
-        // ДОДАНО: без цього іконки favorite не відображали реальний стан до перезавантаження сторінки
-        // void loadFavorites();
+
+        setUser(res.user);
+
         toast.success('Login successful!');
         router.push('/');
       }
     },
     onError: (error: AxiosError<{ error?: string }>) => {
       const errorMessage = error.response?.data?.error ?? error.message ?? 'Oops... some error';
-      toast.error(errorMessage, { id: 'login-error' });
+      const status = error.response?.status;
+
+      if (status === 401) {
+        toast.error('Login failed, invalide user');
+      } else {
+        toast.error(error.response?.data?.error ?? error.message ?? 'Login failed');
+        toast.error(errorMessage, { id: 'login-error' });
+      }
     },
   });
 
@@ -49,25 +51,6 @@ const Login = () => {
     mutation.mutate(values);
     actions.setSubmitting(false);
   };
-
-  //   setError(null);
-  //   try {
-  //     mutation.mutate(values);
-  //     actions.setSubmitting(false);
-
-  //     if (user) {
-  //       setUser(user);
-
-  //       // router.push('/');
-  //     }
-  //   } catch (err: unknown) {
-  //     setError((err as Error).message || 'Oops... some error');
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  //   mutation.mutate(values);
-  //   actions.setSubmitting(false);
-  // };
 
   return (
     <div className={css.pageWrapper}>
@@ -154,12 +137,10 @@ const Login = () => {
                 disabled={!dirty || !isValid || mutation.isPending}
                 className={css.button}
               >
-                {mutation.isPending ? (
-                  <p>LOADER</p>
-                ) : (
-                  // <Oval height={20} width={20} strokeWidth={5} color="#fff" /> // Лоадер
-                  'Login'
-                )}
+                {mutation.isPending
+                  ? Loader()
+                  : // <Oval height={20} width={20} strokeWidth={5} color="#fff" /> // Лоадер
+                    'Login'}
               </button>
             </Form>
           )}
