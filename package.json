@@ -13,6 +13,7 @@
     "axios": "^1.18.0",
     "cookie": "^1.1.1",
     "formik": "^2.4.6",
+    "image-js": "^1.6.1",
     "modern-normalize": "^3.0.1",
     "next": "^16.2.4",
     "react": "^18.2.0",
