@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import SearchBox from '@/components/SearchBox/SearchBox';
-// import container from '@/components/Container/Container';
+import Container from '@/components/Container/Container';
 import css from './Hero.module.css';
 
 type PropsHero = {
@@ -21,6 +21,7 @@ export default function Hero({ onSearch, toast }: PropsHero) {
 
   return (
     <section className={css.hero}>
+      <Container>
       <div className={css.heroContent}>
         <h1>
           Plan, Cook, and <br />
@@ -29,6 +30,7 @@ export default function Hero({ onSearch, toast }: PropsHero) {
         <SearchBox onSearch={handleSubmit} loading={loading} />
         {toast && <div className={css.heroToast}> {toast} </div>}
       </div>
+        </Container>
     </section>
   );
 }
