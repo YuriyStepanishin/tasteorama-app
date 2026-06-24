@@ -1,7 +1,6 @@
 'use client';
 
 import css from './LogoutModal.module.css';
-import Image from 'next/image';
 
 type LogoutModalProps = {
   onClose: () => void;

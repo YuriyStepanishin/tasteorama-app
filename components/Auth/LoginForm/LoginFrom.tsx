@@ -26,6 +26,7 @@ const Login = () => {
       if (res.user._id) {
         localStorage.setItem('userId', res.user._id);
       }
+      console.log('res.user', res.user);
 
       setUser(res.user);
 
