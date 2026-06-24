@@ -86,7 +86,7 @@
   }
 
   .actions {
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
     gap: 27px;
   }
