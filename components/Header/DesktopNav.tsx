@@ -49,7 +49,7 @@ export default function DesktopNav({ isAuth, user, pathname, onLogout }: Desktop
             </Link>
           </li>
           <li>
-            <Link href="/recipes/add" className={css.deskAddRecipeBtn}>
+            <Link href="/add-recipe" className={css.deskAddRecipeBtn}>
               Add Recipe
             </Link>
           </li>
