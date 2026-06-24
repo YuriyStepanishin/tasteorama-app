@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
-import axios from 'axios';
 import Loader from '../../components/Loader/Loader';
-import { fetchCategories, fetchIngredients } from '../../lib/clientApi';
+import { fetchCategories, fetchIngredients, addRecipe } from '../../lib/clientApi';
 import toast from 'react-hot-toast';
 import { recipeSchema } from '../../validation/recipeSchema';
 import styles from './AddRecipeForm.module.css';
@@ -74,7 +73,7 @@ export default function AddRecipeForm() {
               payload.cals = Number(values.cals);
             }
 
-            await axios.post('/api/add-recipe', payload);
+            await addRecipe(payload);
 
             toast.success('Recipe published successfully! 🎉');
             resetForm();
