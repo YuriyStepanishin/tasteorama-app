@@ -23,27 +23,26 @@ const Login = () => {
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (res) => {
-      if (res) {
-        if (res._id) {
-          localStorage.setItem('userId', res._id);
-        }
-
-        setUser(res.user);
-
-        toast.success('Login successful!');
-        router.push('/');
+      if (res.user._id) {
+        localStorage.setItem('userId', res.user._id);
       }
+
+      setUser(res.user);
+
+      toast.success('Login successful!');
+      console.log('BEFORE PUSH');
+      router.push('/');
+      console.log('AFTER PUSH');
+      router.push('/');
     },
     onError: (error: AxiosError<{ error?: string }>) => {
-      const errorMessage = error.response?.data?.error ?? error.message ?? 'Oops... some error';
       const status = error.response?.status;
+      const errorMessage =
+        status === 401
+          ? 'Login failed, invalid user'
+          : (error.response?.data?.error ?? error.message ?? 'Oops... some error');
 
-      if (status === 401) {
-        toast.error('Login failed, invalide user');
-      } else {
-        toast.error(error.response?.data?.error ?? error.message ?? 'Login failed');
-        toast.error(errorMessage, { id: 'login-error' });
-      }
+      toast.error(errorMessage);
     },
   });
 

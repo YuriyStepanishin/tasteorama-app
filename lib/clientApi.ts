@@ -34,8 +34,9 @@ export interface LoginProps {
   password: string;
 }
 
-export const login = async (data: LoginProps): Promise<User> => {
-  const response = await nextServer.post<User>('auth/login', data);
+export const login = async (data: LoginProps): Promise<{ user: User }> => {
+  const response = await nextServer.post<{ user: User }>('auth/login', data);
+
   return response.data;
 };
 
@@ -114,17 +115,54 @@ export const fetchRecipeById = async (recipeId: string): Promise<ServerRecipe> =
   return response.data.recipe;
 };
 
+export const addRecipe = async (payload: FormData): Promise<ServerRecipe> => {
+  const response = await nextServer.post<{ recipe: ServerRecipe }>('/api/recipes', payload);
 
-export const addRecipe = async (payload: any) => {
-  const response = await nextServer.post('recipes', payload);
+  return response.data.recipe;
 };
-  
-export const fetchUserRecipes = async () => {
-  const response = await nextServer.get('/api/recipes/user');
+
+export const fetchUserRecipes = async ({
+  page,
+  perPage,
+  search,
+  category,
+  ingredient,
+}: FetchRecipesParams): Promise<FetchRecipesResponse> => {
+  console.log('request sent');
+  const response = await nextServer.get<FetchRecipesResponse>('/api/recipes/user', {
+    params: {
+      page,
+      perPage,
+      search,
+      category,
+      ingredient,
+    },
+  });
+
   return response.data;
 };
 
-export const fetchFavoriteRecipes = async () => {
-  const response = await nextServer.get('/api/recipes/favorites');
+export const fetchFavoriteRecipes = async ({
+  page,
+  perPage,
+  search,
+  category,
+  ingredient,
+}: FetchRecipesParams): Promise<FetchRecipesResponse> => {
+  const response = await nextServer.get<FetchRecipesResponse>('/api/recipes/favorites', {
+    params: {
+      page,
+      perPage,
+      search,
+      category,
+      ingredient,
+    },
+  });
+
+  return response.data;
+};
+
+export const deleteRecipe = async (recipeId: string): Promise<void> => {
+  const response = await nextServer.delete(`/api/recipes/${recipeId}`);
   return response.data;
 };

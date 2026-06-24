@@ -21,25 +21,39 @@ export default function DesktopNav({ isAuth, user, pathname, onLogout }: Desktop
           Recipes
         </Link>
       </li>
-      
+
       {!isAuth ? (
         <>
           <li>
-            <Link href="/auth/login" className={pathname === '/auth/login' ? css.activeLink : css.link}>Log in</Link>
+            <Link
+              href="/auth/login"
+              className={pathname === '/auth/login' ? css.activeLink : css.link}
+            >
+              Log in
+            </Link>
           </li>
           <li>
-            <Link href="/auth/register" className={css.deskRegisterBtn}>Register</Link>
+            <Link href="/auth/register" className={css.deskRegisterBtn}>
+              Register
+            </Link>
           </li>
         </>
       ) : (
         <>
-            <li>
-              <Link href="/profile" className={pathname === '/profile' ? css.activeLink : css.link}>My Profile</Link>
-            </li>
-            <li>
-              <Link href="/recipes/add" className={css.deskAddRecipeBtn}>Add Recipe</Link>
-            </li>
-          
+          <li>
+            <Link
+              href="/profile/own"
+              className={pathname.startsWith('/profile') ? css.activeLink : css.link}
+            >
+              My Profile
+            </Link>
+          </li>
+          <li>
+            <Link href="/recipes/add" className={css.deskAddRecipeBtn}>
+              Add Recipe
+            </Link>
+          </li>
+
           {/* Інтегроване меню користувача */}
           <li>
             <UserMenu user={user} onLogout={onLogout} />
@@ -49,4 +63,3 @@ export default function DesktopNav({ isAuth, user, pathname, onLogout }: Desktop
     </ul>
   );
 }
-

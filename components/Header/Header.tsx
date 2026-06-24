@@ -12,15 +12,18 @@ import { useAuthStore } from '@/lib/stores/userStore';
 
 import css from './Header.module.css';
 
-
 export default function Header() {
   const pathname = usePathname();
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const {isAuthenticated, user, logout} = useAuthStore(); 
- 
+  const { isAuthenticated, user, logout } = useAuthStore();
+
+  console.log('AUTH STATE:', isAuthenticated, user);
+
   useEffect(() => {
     document.body.style.overflow = isBurgerOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isBurgerOpen]);
 
   useEffect(() => {
@@ -34,36 +37,35 @@ export default function Header() {
   }, []);
 
   const closeMenu = () => setIsBurgerOpen(false);
-  
-  const handleDesktopLogout = async() => { 
-    await logout(); 
+
+  const handleDesktopLogout = async () => {
+    await logout();
   };
 
-  const handleMobileLogout = async() => { 
-    await logout(); 
-    closeMenu(); 
+  const handleMobileLogout = async () => {
+    await logout();
+    closeMenu();
   };
 
   return (
     <div className={css.headerBgWrapper}>
-      <Container >
+      <Container>
         <header className={css.header}>
-          
           <Logo onClick={closeMenu} />
-          
+
           {/* Десктоп та Таблет навігація */}
           <nav className={css.desktopNavBox}>
-            <DesktopNav 
-              isAuth={isAuthenticated} 
-              user={user} 
-              pathname={pathname} 
-              onLogout={handleDesktopLogout} 
+            <DesktopNav
+              isAuth={isAuthenticated}
+              user={user}
+              pathname={pathname}
+              onLogout={handleDesktopLogout}
             />
           </nav>
-          
+
           {/* Бургер-кнопка для виклику модалки */}
           <BurgerButton isOpen={isBurgerOpen} setIsOpen={setIsBurgerOpen} />
-          
+
           {/* Мобільна модалка */}
           <MobileMenu
             isOpen={isBurgerOpen}
@@ -72,7 +74,6 @@ export default function Header() {
             user={user}
             onLogout={handleMobileLogout}
           />
-          
         </header>
       </Container>
     </div>
