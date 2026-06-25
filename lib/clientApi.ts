@@ -41,7 +41,7 @@ export const login = async (data: LoginProps): Promise<{ user: User }> => {
 };
 
 export const logout = async (): Promise<void> => {
-  await nextServer.post('auth/logout');
+  await nextServer.post('api/auth/logout');
 };
 
 export interface MessageResponse {

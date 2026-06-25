@@ -14,8 +14,8 @@ import Footer from '@/components/Footer/Footer';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
-  title: "Tasteorama",
+  metadataBase: new URL('http://localhost:3000'),
+  title: 'Tasteorama',
 };
 
 const montserrat = localFont({
@@ -50,20 +50,16 @@ const dmSans = localFont({
   variable: '--font-heading',
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body>
-<TanStackProvider>
-  <Header />
-  {children}
-  <Footer />
-  <Toaster position="top-right" />
-</TanStackProvider>
+        <TanStackProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+        </TanStackProvider>
       </body>
     </html>
   );

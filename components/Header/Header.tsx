@@ -17,8 +17,6 @@ export default function Header() {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuthStore();
 
-  console.log('AUTH STATE:', isAuthenticated, user);
-
   useEffect(() => {
     document.body.style.overflow = isBurgerOpen ? 'hidden' : '';
     return () => {
