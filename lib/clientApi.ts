@@ -20,7 +20,7 @@ export const register = async ({
   email,
   password,
 }: RegisterProps): Promise<{ user: User }> => {
-  const response = await nextServer.post('api/auth/register', {
+  const response = await nextServer.post('auth/register', {
     name,
     email,
     password,
@@ -35,7 +35,7 @@ export interface LoginProps {
 }
 
 export const login = async (data: LoginProps): Promise<{ user: User }> => {
-  const response = await nextServer.post<{ user: User }>('api/auth/login', data);
+  const response = await nextServer.post<{ user: User }>('auth/login', data);
 
   return response.data;
 };
@@ -49,12 +49,12 @@ export interface MessageResponse {
 }
 
 export const refresh = async (): Promise<MessageResponse> => {
-  const response = await nextServer.post<MessageResponse>('api/auth/refresh');
+  const response = await nextServer.post<MessageResponse>('auth/refresh');
   return response.data;
 };
 
 export const fetchCurrentUser = async (): Promise<User> => {
-  const response = await nextServer.get<User>('/api/me');
+  const response = await nextServer.get<User>('me');
   return response.data;
 };
 
