@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #050505;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tab {
+  position: relative;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #6d6d6d;
+  transition: color 0.2s ease;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #9b6c43;
+  transition: transform 0.2s ease;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  color: #3d2218;
+}
+
+.active {
+  color: #050505;
+  font-weight: 600;
+}
+
+.active::after {
+  transform: scaleX(1);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .tabs {
+    gap: 20px;
+  }
+
+  .tab {
+    font-size: 13px;
+  }
+}

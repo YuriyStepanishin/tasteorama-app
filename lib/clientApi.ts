@@ -53,6 +53,11 @@ export const refresh = async (): Promise<MessageResponse> => {
   return response.data;
 };
 
+export const fetchCurrentUser = async (): Promise<User> => {
+  const response = await nextServer.get<User>('/api/me');
+  return response.data;
+};
+
 // ------------------------------------------------
 // Categories API
 // ------------------------------------------------
@@ -164,5 +169,17 @@ export const fetchFavoriteRecipes = async ({
 
 export const deleteRecipe = async (recipeId: string): Promise<void> => {
   const response = await nextServer.delete(`/api/recipes/${recipeId}`);
+  return response.data;
+};
+
+export const addFavorite = async (recipeId: string) => {
+  const response = await nextServer.post(`/api/recipes/favorites/${recipeId}`);
+
+  return response.data;
+};
+
+export const removeFavorite = async (recipeId: string) => {
+  const response = await nextServer.delete(`/api/recipes/favorites/${recipeId}`);
+
   return response.data;
 };

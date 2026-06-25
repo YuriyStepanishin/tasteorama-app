@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { api } from '../../../api';
 import { cookies } from 'next/headers';
-import { logErrorResponse } from '../../../_utils/utils';
+import { buildBackendCookieHeader, logErrorResponse } from '../../../_utils/utils';
 import { isAxiosError } from 'axios';
 
 export async function POST(
@@ -13,11 +13,11 @@ export async function POST(
     const cookieStore = await cookies();
 
     const res = await api.post(
-      `api/recipes/favorites/${recipeId}`,
+      `/api/recipes/favorites/${recipeId}`,
       {},
       {
         headers: {
-          Cookie: cookieStore.toString(),
+          Cookie: buildBackendCookieHeader(cookieStore),
         },
       }
     );
@@ -28,7 +28,7 @@ export async function POST(
       logErrorResponse(error.response?.data);
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.status }
+        { status: error.response?.status || 500 }
       );
     }
     logErrorResponse({ message: (error as Error).message });
@@ -44,9 +44,9 @@ export async function DELETE(
     const { recipeId } = await params;
     const cookieStore = await cookies();
 
-    const res = await api.delete(`api/recipes/favorites/${recipeId}`, {
+    const res = await api.delete(`/api/recipes/favorites/${recipeId}`, {
       headers: {
-        Cookie: cookieStore.toString(),
+        Cookie: buildBackendCookieHeader(cookieStore),
       },
     });
 
@@ -56,7 +56,7 @@ export async function DELETE(
       logErrorResponse(error.response?.data);
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.status }
+        { status: error.response?.status || 500 }
       );
     }
     logErrorResponse({ message: (error as Error).message });

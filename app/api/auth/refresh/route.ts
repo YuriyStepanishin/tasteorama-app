@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { api } from '../../api';
 import { parse } from 'cookie';
 import { isAxiosError } from 'axios';
-import { logErrorResponse } from '../../_utils/utils';
+import { buildBackendCookieHeader, logErrorResponse } from '../../_utils/utils';
 
 export async function GET() {
   try {
@@ -18,7 +18,7 @@ export async function GET() {
     if (refreshToken) {
       const apiRes = await api.get('auth/refresh', {
         headers: {
-          Cookie: cookieStore.toString(),
+          Cookie: buildBackendCookieHeader(cookieStore),
         },
       });
 

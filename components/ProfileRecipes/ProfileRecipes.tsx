@@ -66,9 +66,9 @@ export default function ProfileRecipes({ recipesType }: Props) {
     return <div>Error loading recipes.</div>;
   }
 
- const totalPages = data?.totalPages ?? 1;
- const recipes = data?.recipes ?? [];
- const recipesCount = data?.totalRecipes ?? 0;
+  const totalPages = data?.totalPages ?? 1;
+  const recipes = data?.recipes ?? [];
+  const recipesCount = data?.totalRecipes ?? 0;
 
   return (
     <>
@@ -96,7 +96,11 @@ export default function ProfileRecipes({ recipesType }: Props) {
         />
       )}
 
-      <RecipesList recipes={recipes} isOwn={recipesType === 'own'} />
+      <RecipesList
+        recipes={recipes}
+        isOwn={recipesType === 'own'}
+        favoriteAction={recipesType === 'favorites' ? 'remove' : 'add'}
+      />
 
       {totalPages > 1 && <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />}
     </>

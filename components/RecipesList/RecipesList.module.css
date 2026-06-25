@@ -6,16 +6,31 @@
   justify-content: center;
 }
 
+.profileList {
+  align-items: stretch;
+  gap: 14px;
+}
+
 @media screen and (min-width: 768px) {
   .list {
     flex-wrap: wrap;
     flex-direction: row;
     max-width: 705px;
   }
+
+  .profileList {
+    gap: 16px;
+    max-width: 100%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .list {
     max-width: 1225px;
+  }
+
+  .profileList {
+    max-width: 100%;
+    gap: 14px;
   }
 }

@@ -7,11 +7,11 @@
 
   width: 100%;
 
-  padding: 16px 0;
+  padding: 8px 0 18px;
 }
 
 .recipesCount {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
 
@@ -169,15 +169,23 @@
   .desktopControls {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
 
   .desktopControls .select {
-    width: auto;
-    min-width: 180px;
+    width: 132px;
+    min-width: 132px;
+    height: 32px;
+    font-size: 12px;
+    border-radius: 6px;
+    color: #7a7a7a;
+    border-color: #ece6dc;
+    background-color: #fff;
   }
 
   .desktopControls .resetButton {
-    font-size: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #5a5a5a;
   }
 }

@@ -3,7 +3,7 @@ import { api } from '../../api';
 import { cookies } from 'next/headers';
 import { parse } from 'cookie';
 import { isAxiosError } from 'axios';
-import { logErrorResponse } from '../../_utils/utils';
+import { logErrorResponse, normalizeSessionId } from '../../_utils/utils';
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,7 +16,15 @@ export async function POST(req: NextRequest) {
 
     if (setCookie) {
       const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
-      const skipKeys = new Set(['expires', 'max-age', 'path', 'httponly', 'secure', 'samesite', 'domain']);
+      const skipKeys = new Set([
+        'expires',
+        'max-age',
+        'path',
+        'httponly',
+        'secure',
+        'samesite',
+        'domain',
+      ]);
 
       for (const cookieStr of cookieArray) {
         const parsed = parse(cookieStr);
@@ -28,7 +36,9 @@ export async function POST(req: NextRequest) {
         };
         for (const [key, value] of Object.entries(parsed)) {
           if (!skipKeys.has(key.toLowerCase()) && value) {
-            cookieStore.set(key, String(value), options);
+            const cookieValue =
+              key === 'sessionId' ? normalizeSessionId(String(value)) : String(value);
+            cookieStore.set(key, cookieValue, options);
           }
         }
       }

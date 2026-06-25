@@ -21,9 +21,7 @@ interface RecipeDetailsProps {
   recipeId: string;
 }
 
-export default function RecipeDetails({
-  initialRecipe,
-}: RecipeDetailsProps) {
+export default function RecipeDetails({ initialRecipe, recipeId }: RecipeDetailsProps) {
   return (
     <Section>
       <Container>
@@ -84,7 +82,7 @@ export default function RecipeDetails({
               </p>
 
               <div className={styles.saveButtonWrapper}>
-                <SaveButton />
+                <SaveButton recipeId={recipeId} />
               </div>
             </aside>
           </div>
