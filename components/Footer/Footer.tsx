@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState  } from 'react';
 
 import AuthModal from '@/components/AuthModal/AuthModal';
 import Container from '@/components/Container/Container';
@@ -12,11 +12,32 @@ import css from './Footer.module.css';
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
 
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
+  useEffect(() => {
+    const checkHeight = () => {
+
+      const hasNoScroll = document.documentElement.scrollHeight <= window.innerHeight;
+      setIsBottom(hasNoScroll);
+    };
+
+    checkHeight();
+    window.addEventListener('resize', checkHeight);
+    
+    const timer = setTimeout(checkHeight, 500); 
+
+    return () => {
+      window.removeEventListener('resize', checkHeight);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  const footerClass = `${ css.footerBgWrapper } ${ isBottom ?css.fixedBottom: ''}`;
+  
   return (
-    <div className={css.footerBgWrapper}>
+    <div className={footerClass}>
       <Container>
         <footer className={css.footer}>
           <Logo />
@@ -26,7 +47,7 @@ export default function Footer() {
           <nav>
             <ul className={css.navList}>
               <li>
-                <Link href="/recipes" className={css.navLink}>
+                <Link href="/" className={css.navLink}>
                   Recipes
                 </Link>
               </li>

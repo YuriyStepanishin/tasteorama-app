@@ -63,8 +63,8 @@ export default function MobileMenu({ isOpen, onClose, isAuth, user, onLogout }: 
           <ul className={css.linksList}>
             <li>
               <Link
-                href="/recipes"
-                className={pathname === '/recipes' ? css.activeLink : css.link}
+                href="/"
+                className={pathname === '/' ? css.activeLink : css.link}
                 onClick={onClose}
               >
                 Recipes
@@ -111,7 +111,7 @@ export default function MobileMenu({ isOpen, onClose, isAuth, user, onLogout }: 
           {/* Кнопка додавання рецепту */}
           {isAuth && (
             <div className={css.menuFooter}>
-              <Link href="/recipes/add" className={css.mobBtnAddRecipe} onClick={onClose}>
+              <Link href="/add-recipe" className={css.mobBtnAddRecipe} onClick={onClose}>
                 Add Recipe
               </Link>
             </div>

@@ -17,7 +17,7 @@ export default function DesktopNav({ isAuth, user, pathname, onLogout }: Desktop
   return (
     <ul className={css.navList}>
       <li>
-        <Link href="/recipes" className={pathname === '/recipes' ? css.activeLink : css.link}>
+        <Link href="/" className={pathname === '/' ? css.activeLink : css.link}>
           Recipes
         </Link>
       </li>

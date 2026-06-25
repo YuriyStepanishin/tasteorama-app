@@ -31,7 +31,7 @@ export default function Navigation({
     <ul className={css.navList}>
       {/* Цей лінк показуємо ЗАВЖДИ (і для гостей, і для авторизованих) */}
       <li className={css.navItem}>
-        <Link href="/recipes" className={getLinkClass('/recipes')} onClick={onCloseMenu}>
+        <Link href="/" className={getLinkClass('/')} onClick={onCloseMenu}>
           Recipes
         </Link>
       </li>
@@ -68,8 +68,8 @@ export default function Navigation({
           </li>
           <li className={css.navItem}>
             <Link
-              href="/recipes/add"
-              className={getLinkClass('/recipes/add')}
+              href="/add-recipe"
+              className={getLinkClass('/add-recipe')}
               onClick={onCloseMenu}
             >
               Add Recipe
