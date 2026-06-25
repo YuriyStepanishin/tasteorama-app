@@ -8,7 +8,7 @@ export interface IngredientProps {
   name: string;
 }
 
-export interface AddRecipePayload {
+export interface AddRecipeFormValues {
   title: string;
   description: string;
   time: string;
@@ -19,4 +19,5 @@ export interface AddRecipePayload {
     ingredientAmount: string;
   }[];
   instructions: string;
+  thumb?: File | null;
 }

@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import { recipeSchema } from '../../validation/recipeSchema';
 import styles from './AddRecipeForm.module.css';
 
-import { CategoryProps, IngredientProps, AddRecipePayload } from './interface';
+import { CategoryProps, IngredientProps } from './interface';
 
 const initialValues = {
   name: '',
@@ -19,7 +19,7 @@ const initialValues = {
   category: '',
   ingredient: [] as { ingredientId: string; measure: string }[],
   instruction: '',
-  recipeImg: null,
+  recipeImg: null as File | null,
 };
 
 export default function AddRecipeForm() {
@@ -57,23 +57,29 @@ export default function AddRecipeForm() {
         validationSchema={recipeSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
-            const payload: AddRecipePayload = {
-              title: values.name,
-              description: values.decr,
-              time: String(values.cookiesTime),
-              category: values.category,
-              ingredients: values.ingredient.map(item => ({
-                ingredient: item.ingredientId,
-                ingredientAmount: item.measure,
-              })),
-              instructions: values.instruction,
-            };
+            const formData = new FormData();
 
+            formData.append('title', values.name);
+            formData.append('description', values.decr);
+            formData.append('time', String(values.cookiesTime));
+            formData.append('category', values.category);
+            formData.append('instructions', values.instruction);
+            
             if (values.cals) {
-              payload.cals = Number(values.cals);
+              formData.append('cals', String(values.cals));
+            }
+            
+            const ingredientsPayload = values.ingredient.map(item => ({
+              ingredient: item.ingredientId,
+              ingredientAmount: item.measure,
+            }));
+            formData.append('ingredients', JSON.stringify(ingredientsPayload));
+
+            if (values.recipeImg) {
+              formData.append('thumb', values.recipeImg);
             }
 
-            await addRecipe(payload);
+            await addRecipe(formData);
 
             toast.success('Recipe published successfully! 🎉');
             resetForm();
@@ -113,9 +119,10 @@ export default function AddRecipeForm() {
                   )}
 
                   {values.recipeImg && (
+                   /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={URL.createObjectURL(values.recipeImg as File)}
-                      alt="Recipe preview" // TODO: Connect to db
+                      alt="Recipe preview"
                       className={styles.previewImage}
                     />
                   )}
