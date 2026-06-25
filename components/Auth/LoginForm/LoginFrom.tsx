@@ -26,14 +26,13 @@ const Login = () => {
       if (res.user._id) {
         localStorage.setItem('userId', res.user._id);
       }
-      console.log('res.user', res.user);
 
       setUser(res.user);
 
       toast.success('Login successful!');
-      console.log('BEFORE PUSH');
+
       router.push('/');
-      console.log('AFTER PUSH');
+
       router.push('/');
     },
     onError: (error: AxiosError<{ error?: string }>) => {

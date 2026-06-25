@@ -17,7 +17,15 @@ export async function POST(req: NextRequest) {
     if (setCookie) {
       const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
 
-      const skipKeys = new Set(['expires', 'max-age', 'path', 'httponly', 'secure', 'samesite', 'domain']);
+      const skipKeys = new Set([
+        'expires',
+        'max-age',
+        'path',
+        'httponly',
+        'secure',
+        'samesite',
+        'domain',
+      ]);
 
       for (const cookieStr of cookieArray) {
         const parsed = parse(cookieStr);
@@ -31,7 +39,6 @@ export async function POST(req: NextRequest) {
         // Зберігаємо ВСІ куки від бекенду (PHPSESSID, accessToken, refreshToken тощо)
         for (const [key, value] of Object.entries(parsed)) {
           if (!skipKeys.has(key.toLowerCase()) && value) {
-            console.log(`[LOGIN] saving cookie: ${key}=${String(value).slice(0, 20)}...`);
             cookieStore.set(key, String(value), options);
           }
         }
