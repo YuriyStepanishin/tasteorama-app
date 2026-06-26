@@ -65,7 +65,7 @@ export default function RecipeDetails({ initialRecipe, recipeId }: RecipeDetails
 
           {/* Кнопка */}
           <div className={styles.saveButtonWrapper}>
-            <SaveButton recipeId={recipeId} initialIsFavorite={initialRecipe.isFavorite} />
+            <SaveButton recipeId={recipeId} initialIsFavorite={initialRecipe.isFavorite ?? false} />
           </div>
 
           {/* About */}
