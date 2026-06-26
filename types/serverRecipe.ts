@@ -1,7 +1,7 @@
 interface ServerRecipeIngredient {
-  ingredient: string;
-  ingredientAmount: string;
   _id: string;
+  id: string;
+  measure: string;
 }
 
 export interface ServerRecipe {
