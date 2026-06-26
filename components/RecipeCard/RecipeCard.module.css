@@ -11,13 +11,14 @@
 @media screen and (min-width: 768px) {
   .card {
     width: calc((100% / 2) - 24px);
-    max-width: 339px;
+    min-width: 339px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .card {
-    width: calc((100% / 4) - 48px);
+    width: calc((100% / 4) - 72px);
+    min-width: 288px;
   }
 }
 
