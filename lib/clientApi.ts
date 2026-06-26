@@ -20,7 +20,7 @@ export const register = async ({
   email,
   password,
 }: RegisterProps): Promise<{ user: User }> => {
-  const response = await nextServer.post('api/auth/register', {
+  const response = await nextServer.post('auth/register', {
     name,
     email,
     password,
