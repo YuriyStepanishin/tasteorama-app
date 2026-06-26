@@ -48,6 +48,9 @@ body {
   background-color: var(--background);
   color: var(--black);
   font-family: var(--font-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -97,3 +100,8 @@ img {
   position: relative !important;
   margin-top: 16px;
 }
+
+main {
+  flex: 1;
+}
+
