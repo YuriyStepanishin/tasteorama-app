@@ -16,7 +16,7 @@ interface Recipe {
   calories?: string;
   ingredients: string[];
   steps: string[];
-  isFavorite: boolean;
+  isFavorite?: boolean;
 }
 
 interface RecipeDetailsProps {
