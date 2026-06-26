@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import RecipeDetails from '@/components/Recipe/RecipeDetails';
+import RecipeDetails from '@/components/RecipeDetails/RecipeDetails';
 import { fetchRecipeById, fetchIngredients } from '@/lib/clientApi'; // 👈 додали
 import { ServerRecipe } from '@/types/serverRecipe';
 import { Ingredient } from '@/types/indredient';

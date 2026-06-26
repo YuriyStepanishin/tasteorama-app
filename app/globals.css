@@ -89,19 +89,6 @@ img {
   height: auto;
 }
 
-.swiper-pagination-bullet-active {
-  width: 15px !important;
-  height: 15px !important;
-  background: #000 !important;
-  opacity: 1;
-}
-
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 16px;
-}
-
 main {
   flex: 1;
 }
-
