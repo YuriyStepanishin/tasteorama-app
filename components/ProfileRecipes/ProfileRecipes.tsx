@@ -45,16 +45,16 @@ export default function ProfileRecipes({ recipesType }: Props) {
         ? fetchUserRecipes({
             page,
             perPage: 12,
-            search: search  undefined,
-            category: category  undefined,
-            ingredient: ingredient  undefined,
+            search: search || undefined,
+            category: category || undefined,
+            ingredient: ingredient || undefined,
           })
         : fetchFavoriteRecipes({
             page,
             perPage: 12,
-            search: search  undefined,
-            category: category  undefined,
-            ingredient: ingredient  undefined,
+            search: search || undefined,
+            category: category || undefined,
+            ingredient: ingredient || undefined,
           }),
   });
 
