@@ -53,7 +53,7 @@ const dmSans = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${dmSans.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         <TanStackProvider>
           <Header />
           {children}

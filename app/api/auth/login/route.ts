@@ -51,9 +51,19 @@ export async function POST(req: NextRequest) {
 
     console.log('Cookies after login:', cookieStore.getAll());
 
-    return NextResponse.json(apiRes.data, {
+    const response = NextResponse.json(apiRes.data, {
       status: apiRes.status,
     });
+
+    // Передаємо Set-Cookie headers до клієнта
+    if (setCookie) {
+      const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
+      cookieArray.forEach((cookie) => {
+        response.headers.append('Set-Cookie', cookie);
+      });
+    }
+
+    return response;
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);

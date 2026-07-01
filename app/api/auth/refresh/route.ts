@@ -25,6 +25,8 @@ export async function GET() {
       const setCookie = apiRes.headers['set-cookie'];
 
       if (setCookie) {
+        const response = NextResponse.json({ success: true }, { status: 200 });
+
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
@@ -38,7 +40,13 @@ export async function GET() {
           if (parsed.accessToken) cookieStore.set('accessToken', parsed.accessToken, options);
           if (parsed.refreshToken) cookieStore.set('refreshToken', parsed.refreshToken, options);
         }
-        return NextResponse.json({ success: true }, { status: 200 });
+
+        // Передаємо Set-Cookie headers до клієнта
+        cookieArray.forEach((cookie) => {
+          response.headers.append('Set-Cookie', cookie);
+        });
+
+        return response;
       }
     }
     return NextResponse.json({ success: false }, { status: 200 });

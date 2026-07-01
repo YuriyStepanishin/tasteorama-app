@@ -7,14 +7,28 @@ import { buildBackendCookieHeader, logErrorResponse } from '../_utils/utils';
 export async function POST(request: NextRequest) {
   try {
     const cookieStore = await cookies();
-    const body = await request.json();
+    const contentType = request.headers.get('content-type') || '';
+    const headers: Record<string, string> = {
+      Cookie: buildBackendCookieHeader(cookieStore),
+    };
 
-    const res = await api.post('/api/add-recipe', body, {
-      headers: {
-        Cookie: buildBackendCookieHeader(cookieStore),
-        'Content-Type': 'application/json',
-      },
-    });
+    let body: FormData | unknown;
+
+    if (contentType.includes('multipart/form-data')) {
+      const incomingFormData = await request.formData();
+      const forwardedFormData = new FormData();
+
+      for (const [key, value] of incomingFormData.entries()) {
+        forwardedFormData.append(key, value);
+      }
+
+      body = forwardedFormData;
+    } else {
+      body = await request.json();
+      headers['Content-Type'] = 'application/json';
+    }
+
+    const res = await api.post('/api/add-recipe', body, { headers });
 
     return NextResponse.json(res.data, { status: res.status });
   } catch (error) {

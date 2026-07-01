@@ -18,7 +18,6 @@ import {
 import { Category } from '@/types/category';
 import { Ingredient } from '@/types/indredient';
 import { ServerRecipe } from '@/types/serverRecipe';
-import SaveButton from '../SaveButton/SaveButton';
 
 interface Props {
   recipesType: 'own' | 'favorites';

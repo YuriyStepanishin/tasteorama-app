@@ -42,7 +42,15 @@ export async function POST(req: NextRequest) {
           }
         }
       }
-      return NextResponse.json(apiRes.data, { status: apiRes.status });
+
+      const response = NextResponse.json(apiRes.data, { status: apiRes.status });
+
+      // Передаємо Set-Cookie headers до клієнта
+      cookieArray.forEach((cookie) => {
+        response.headers.append('Set-Cookie', cookie);
+      });
+
+      return response;
     }
 
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
